@@ -48,3 +48,15 @@
 .game-input:focus {
   @apply border-customYellow;
 }
+
+.playedCardButton {
+  @apply bg-customYellow text-black font-bold w-full h-full rounded-3xl;
+}
+
+.winnerButton {
+  @apply bg-customRed text-black font-bold w-4/5 h-4/5 rounded mt-3;
+}
+
+.resetButton {
+  @apply bg-customLightBlue text-black font-bold w-4/5 h-4/5 rounded mt-3;
+}

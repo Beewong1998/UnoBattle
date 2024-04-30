@@ -17,7 +17,10 @@ export default function PlayerNumberInput({
           max="10"
           value={numberOfPlayers}
         />
-        <button className="bg-customYellow hover:bg-blue-700 text-black font-bold py-3 px-6 mt-4 rounded mr-3">
+        <button
+          disabled
+          className="bg-customYellow hover:bg-blue-700 text-black font-bold py-3 px-6 mt-4 rounded mr-3"
+        >
           Back
         </button>
         <button

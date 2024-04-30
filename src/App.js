@@ -50,7 +50,7 @@ function App() {
   console.log(scores);
 
   return (
-    <div className="App bg-customDeepBlue grid grid-cols-12 grid-rows-12 w-screen h-screen">
+    <div className="App bg-customDeepBlue grid grid-cols-12 grid-rows-12 w-screen h-screen grid-flow-dense">
       {!inputtedPlayers && (
         <PlayerNumberInput
           numberOfPlayers={numberOfPlayers}
@@ -61,9 +61,10 @@ function App() {
       {!inputtedPlayerNames && inputtedPlayers && (
         // Render elements based on the numberOfPlayers state
         <>
-          <div className="w-full row-start-6 row-span-6 col-start-3 col-span-8">
+          <div className="w-full row-start-2 row-span-6 col-start-3 col-span-8">
             {Array.from({ length: numberOfPlayers }).map((_, index) => (
               <input
+                className="game-input mb-1"
                 required
                 placeholder={`Enter the name of player ${index + 1}`}
                 key={index}
@@ -71,6 +72,7 @@ function App() {
                 onChange={(e) => handlePlayerNameChange(e, index)}
               />
             ))}
+
             <button
               onClick={() => setInputtedPlayers(false)}
               className="bg-customYellow hover:bg-blue-700 text-black font-bold py-3 px-6 mt-4 rounded mr-3"
@@ -102,7 +104,7 @@ function App() {
         />
       )}
 
-      {inputtedPlayerNames && (
+      {inputtedPlayerNames && !eventTriggered && (
         <WinnerButton
           winnerDecided={winnerDecided}
           setWinnerDecided={setWinnerDecided}

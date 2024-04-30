@@ -22,5 +22,13 @@ export default function PlayedCardButton({ setEventTriggered, setEventType }) {
     }
   }
 
-  return <button onClick={handleClick}>Played Card</button>;
+  return (
+    <>
+      <div className="row-start-5 row-span-3 col-start-3 col-span-8">
+        <button className="playedCardButton" onClick={handleClick}>
+          Play Card
+        </button>
+      </div>
+    </>
+  );
 }
