@@ -6,27 +6,13 @@ export default function EventArea({
   setEventTriggered,
 }) {
   const [showEvent, setShowEvent] = useState(false);
-  //   const [showPlayersInvolved, setShowPlayersInvolved] = useState(false);
-  //   const [showInstructions, setShowInstructions] = useState(false);
-  //   const [showNextPlayer, setShowNextPlayer] = useState(false);
 
   useEffect(() => {
     // Add a small delay to start the animation after component mount
     const eventDelay = setTimeout(() => setShowEvent(true), 100);
-    // const playersInvolvedDelay = setTimeout(
-    //   () => setShowPlayersInvolved(true),
-    //   1000
-    // );
-    // const showInstructionsDelay = setTimeout(
-    //   () => setShowInstructions(true),
-    //   2000
-    // );
-    // const showNextPlayerDelay = setTimeout(() => setShowNextPlayer(true), 3000);
+
     return () => {
       clearTimeout(eventDelay);
-      //   clearTimeout(playersInvolvedDelay);
-      //   clearTimeout(showInstructionsDelay);
-      //   clearTimeout(showNextPlayerDelay);
     };
   }, []);
   function generateTwoUniqueRandomNumbers(array) {

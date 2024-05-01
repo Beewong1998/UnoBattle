@@ -32,6 +32,7 @@ export default function ScoreTracking({
       <td>{scores[index]}</td>
       <td>
         <input
+          className="score-input w-3/4 rounded-lg text-center"
           type="number"
           onChange={(event) => handleRoundScoreChange(index, event)}
         />
@@ -41,18 +42,28 @@ export default function ScoreTracking({
 
   return (
     <>
-      <table>
-        <thead>
-          <tr>
-            <th>Player</th>
-            <th>Total Score</th>
-            <th>Round Score</th>
-            <th onClick={() => setWinnerDecided(false)}>X</th>
-          </tr>
-        </thead>
-        <tbody>{tableRows}</tbody>
-      </table>
-      <button onClick={handleSubmit}>Submit</button>
+      <div className={`row-start-2 row-span-4 col-start-1 col-span-12 px-3`}>
+        <table className="bg-customYellow border-collapse border border-gray-400 w-full rounded-lg">
+          <thead>
+            <tr>
+              <th>Player</th>
+              <th>Total Score</th>
+              <th>Round Score</th>
+              <th className="pr-2" onClick={() => setWinnerDecided(false)}>
+                X
+              </th>
+            </tr>
+          </thead>
+          <tbody>{tableRows}</tbody>
+        </table>
+
+        <button
+          className="w-full bg-customGreen active:bg-customGreenActive text-black font-semibold  rounded-2xl mt-2 py-1 font-semibold"
+          onClick={handleSubmit}
+        >
+          Submit
+        </button>
+      </div>
     </>
   );
 }

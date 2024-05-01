@@ -91,6 +91,15 @@
 .event-area.show-event,
 .player-area.show-players-involved,
 .instruction-area.show-instructions,
-.next-player-area.show-next-player {
+.next-player-area.show-next-player,
+.event-area.show-score-board {
   opacity: 1;
+}
+
+.score-input {
+  @apply mb-2;
+}
+
+tr th {
+  @apply font-semibold;
 }

@@ -12,6 +12,7 @@ module.exports = {
         customYellowActive: "#c9ad3e",
         customWhite: "#ECECEC",
         customGreen: "#50f3a9",
+        customGreenActive: "#48e09b",
       },
     },
   },

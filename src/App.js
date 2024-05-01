@@ -1,6 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import PlayerNumberInput from "./PlayerNumberInput";
 import PlayedCardButton from "./PlayedCardButton";
 import EventArea from "./EventArea";
@@ -38,15 +38,6 @@ function App() {
     setInputtedPlayers(true);
   }
 
-  const contentRef = useRef(null);
-
-  const handleInputFocus = () => {
-    if (contentRef.current) {
-      // Scroll the content up by setting scrollTop to the top of the container
-      contentRef.current.scrollTop = 0;
-    }
-  };
-
   //function to save the different player names into an array
   function handlePlayerNameChange(e, index) {
     const updatedPlayerNames = [...playerNames];
@@ -59,13 +50,12 @@ function App() {
   console.log(scores);
 
   return (
-    <div className="App bg-customDeepBlue grid grid-cols-12 grid-rows-12 w-full h-screen grid-flow-dense">
+    <div className="App bg-customDeepBlue grid grid-cols-12 grid-rows-12 w-screen h-screen grid-flow-dense">
       {!inputtedPlayers && (
         <PlayerNumberInput
           numberOfPlayers={numberOfPlayers}
           handleChange={handleChange}
           handleSubmit={handleSubmit}
-          handleInputFocus={handleInputFocus}
         />
       )}
       {!inputtedPlayerNames && inputtedPlayers && (
