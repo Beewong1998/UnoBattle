@@ -2,8 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap");
+
 .App {
   text-align: center;
+  font-family: "Fredoka";
 }
 
 .App-logo {
@@ -59,4 +62,8 @@
 
 .resetButton {
   @apply bg-customLightBlue text-black font-bold w-4/5 h-4/5 rounded mt-3;
+}
+
+.button {
+  @apply font-semibold text-black w-24;
 }

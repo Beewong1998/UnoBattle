@@ -75,15 +75,15 @@ function App() {
 
             <button
               onClick={() => setInputtedPlayers(false)}
-              className="bg-customYellow hover:bg-blue-700 text-black font-bold py-3 px-6 mt-4 rounded mr-3"
+              className="button bg-customYellow hover:bg-blue-700 font-bold py-3 px-6 mt-4 rounded mr-3"
             >
               Back
             </button>
             <button
-              className="bg-customRed hover:bg-blue-700 text-black font-bold py-3 px-6 mt-4 rounded ml-3"
+              className="button bg-customRed hover:bg-blue-700 py-3 px-6 mt-4 rounded ml-3"
               onClick={() => setInputtedPlayerNames(true)}
             >
-              Confirm
+              Next
             </button>
           </div>
         </>
@@ -118,7 +118,9 @@ function App() {
           setWinnerDecided={setWinnerDecided}
         />
       )}
-      {inputtedPlayers && inputtedPlayerNames && <ResetButton />}
+      {inputtedPlayers && inputtedPlayerNames && !eventTriggered && (
+        <ResetButton />
+      )}
     </div>
   );
 }

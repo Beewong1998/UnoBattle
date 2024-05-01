@@ -19,13 +19,13 @@ export default function PlayerNumberInput({
         />
         <button
           disabled
-          className="bg-customYellow hover:bg-blue-700 text-black font-bold py-3 px-6 mt-4 rounded mr-3"
+          className="button bg-customYellow hover:bg-blue-700  font-bold py-3 px-6 mt-4 rounded mr-3"
         >
           Back
         </button>
         <button
           type="submit"
-          className="bg-customRed hover:bg-blue-700 text-black font-bold py-3 px-6 mt-4 rounded ml-3"
+          className="button bg-customRed hover:bg-blue-700  py-3 px-6 mt-4 rounded ml-3"
         >
           Next
         </button>

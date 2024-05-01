@@ -32,44 +32,81 @@ export default function EventArea({
     "Uno",
   ];
   let header = (
-    <div>
-      <h2>The event is {eventType}!</h2>
-    </div>
+    <h1>
+      <span className="underline">{eventType}!</span>
+    </h1>
   );
 
+  let playersInvolved;
   let instructions;
   if (eventType.toLowerCase() == "luck of the draw") {
+    playersInvolved = (
+      <>
+        <p>
+          The player involved is{" "}
+          <span className="font-bold underline">
+            {playerNames[Math.floor(Math.random() * playerNames.length)]}
+          </span>
+        </p>
+      </>
+    );
     instructions = (
       <>
         <p>
-          The player doing the event is{" "}
-          {playerNames[Math.floor(Math.random() * playerNames.length)]}
-        </p>
-        <p>
           The player must draw cards until they get a/n{" "}
-          {cardTypes[Math.floor(Math.random() * cardTypes.length)]} card!
+          <span className="font-bold underline">
+            {cardTypes[Math.floor(Math.random() * cardTypes.length)]}
+          </span>{" "}
+          card!
         </p>
       </>
     );
   } else if (eventType.toLowerCase() == "swapparoo") {
     const [randomNumber1, randomNumber2] =
       generateTwoUniqueRandomNumbers(playerNames);
-    instructions = (
+    playersInvolved = (
       <>
         <p>
-          The players doing the event are {playerNames[randomNumber1]} and{" "}
-          {playerNames[randomNumber2]}
+          The players involved are{" "}
+          <span className="font-bold underline">
+            {playerNames[randomNumber1]}
+          </span>{" "}
+          and{" "}
+          <span className="font-bold underline">
+            {playerNames[randomNumber2]}
+          </span>
         </p>
-        <p>The players must swap their cards with each other!</p>
       </>
     );
+    instructions = <p>The players must swap their cards with each other!</p>;
   }
 
   return (
     <>
-      {header}
-      {instructions}
-      <button onClick={() => setEventTriggered(false)}>Event Completed</button>
+      <div className="row-start-3 row-span-8 col-start-2 col-span-10">
+        <div className="font-bold text-6xl underline bg-customRed w-full pt-4 pb-6 rounded-lg ">
+          {header}
+        </div>
+        <div className="font-bold text-3xl text-center text-white underline pt-6">
+          Players involved
+        </div>
+        <div className="font-medium px-3 text-2xl bg-customYellow w-full py-4 rounded-lg mt-3">
+          {playersInvolved}
+        </div>
+        <div className="font-bold text-3xl text-center text-white underline pt-6">
+          Instructions
+        </div>
+        <div className="font-medium px-3 text-2xl bg-customGreen w-full py-4 rounded-lg mt-3">
+          {instructions}
+        </div>
+        <hr className="mt-8" />
+        <button
+          className="button bg-customRed text-black font-bold w-4/5 rounded-lg mt-6 text-s p-2"
+          onClick={() => setEventTriggered(false)}
+        >
+          Next
+        </button>
+      </div>
     </>
   );
 }
