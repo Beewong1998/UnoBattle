@@ -13,11 +13,11 @@ export default function ResetButton() {
           <>
             <button className="bg-customLightBlue text-black font-semibold w-4/5 h-4/5 rounded-2xl mt-3 text-s">
               <p className="underline mb-2">Are you sure?</p>
-              <button className="mr-3" onClick={() => window.location.reload()}>
-                Yes
-              </button>
-              <button className="ml-3" onClick={() => setConfirmation(false)}>
+              <button className="mr-3" onClick={() => setConfirmation(false)}>
                 No
+              </button>
+              <button className="ml-3" onClick={() => window.location.reload()}>
+                Yes
               </button>
             </button>
           </>
