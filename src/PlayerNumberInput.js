@@ -4,6 +4,7 @@ export default function PlayerNumberInput({
   handleChange,
   handleSubmit,
   numberOfPlayers,
+  handleInputFocus,
 }) {
   return (
     <div className="w-full row-start-6 row-span-6 col-start-3 col-span-8">
@@ -11,6 +12,7 @@ export default function PlayerNumberInput({
         <input
           className="game-input"
           onChange={handleChange}
+          onFocus={handleInputFocus}
           placeholder="Enter the number of players"
           type="number"
           min="2"
