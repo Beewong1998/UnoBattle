@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import "ldrs/ring";
+import { hourglass } from "ldrs";
+
+hourglass.register();
 
 export default function ScoreTracking({
   playerNames,
@@ -9,6 +13,7 @@ export default function ScoreTracking({
   const [roundScores, setRoundScores] = useState(
     Array(playerNames.length).fill(0)
   );
+  const [isSaving, setIsSaving] = useState(false);
 
   const handleRoundScoreChange = (index, event) => {
     const newRoundScores = [...roundScores];
@@ -17,22 +22,25 @@ export default function ScoreTracking({
   };
 
   const handleSubmit = () => {
+    setIsSaving(true);
     const newScores = scores.map((score, index) => score + roundScores[index]);
     setScores(newScores);
     setRoundScores(Array(playerNames.length).fill(0)); // Reset round scores after submission
+
     setTimeout(() => {
       setWinnerDecided(false);
+      setIsSaving(false);
     }, 2000);
   };
 
   // Render the table rows for each player
   const tableRows = playerNames.map((player, index) => (
-    <tr key={index}>
+    <tr className="text-lg" key={index}>
       <td>{player}</td>
       <td>{scores[index]}</td>
       <td>
         <input
-          className="score-input w-3/4 rounded-lg text-center"
+          className=" w-2/4 rounded-lg text-center"
           type="number"
           onChange={(event) => handleRoundScoreChange(index, event)}
         />
@@ -42,8 +50,10 @@ export default function ScoreTracking({
 
   return (
     <>
-      <div className={`row-start-2 row-span-4 col-start-1 col-span-12 px-3`}>
-        <table className="bg-customYellow border-collapse border border-gray-400 w-full rounded-lg">
+      <div
+        className={`row-start-2 row-span-9 col-start-1 col-span-12 px-3 z-50`}
+      >
+        <table className="bg-customYellow border border-gray-400 w-full h-full rounded-lg">
           <thead>
             <tr>
               <th>Player</th>
@@ -56,12 +66,20 @@ export default function ScoreTracking({
           </thead>
           <tbody>{tableRows}</tbody>
         </table>
-
         <button
           className="w-full bg-customGreen active:bg-customGreenActive text-black font-semibold  rounded-2xl mt-2 py-1 font-semibold"
           onClick={handleSubmit}
         >
-          Submit
+          {!isSaving ? (
+            "Submit"
+          ) : (
+            <l-hourglass
+              size="20"
+              bg-opacity="0.1"
+              speed="1"
+              color="black"
+            ></l-hourglass>
+          )}
         </button>
       </div>
     </>

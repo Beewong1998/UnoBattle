@@ -96,10 +96,6 @@
   opacity: 1;
 }
 
-.score-input {
-  @apply mb-2;
-}
-
 tr th {
   @apply font-semibold;
 }

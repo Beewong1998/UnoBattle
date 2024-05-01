@@ -95,7 +95,7 @@ export default function EventArea({
 
   return (
     <>
-      <div className={`row-start-3 row-span-8 col-start-2 col-span-10`}>
+      <div className={`row-start-2 row-span-8 col-start-2 col-span-10`}>
         <div
           className={`font-bold text-6xl underline bg-customRed w-full pt-4 pb-6 rounded-lg event-area ${
             showEvent ? "show-event" : ""
