@@ -11,7 +11,7 @@ export default function ResetButton() {
           </button>
         ) : (
           <>
-            <button className="bg-customLightBlue text-black font-bold w-4/5 h-4/5 rounded-2xl mt-3 text-s">
+            <button className="bg-customLightBlue text-black font-semibold w-4/5 h-4/5 rounded-2xl mt-3 text-s">
               <p className="underline mb-2">Are you sure?</p>
               <button className="mr-3" onClick={() => window.location.reload()}>
                 Yes

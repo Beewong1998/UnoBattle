@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import noEvent from "./sound-effects/noEvent.mp3";
+import yesEvent from "./sound-effects/yesEvent.mp3";
 
 export default function PlayedCardButton({ setEventTriggered, setEventType }) {
   //generate a number between 0 to 100
@@ -16,11 +18,23 @@ export default function PlayedCardButton({ setEventTriggered, setEventType }) {
   function handleClick() {
     const randomNumber = randomNumberGenerator();
 
-    if (randomNumber < 20) {
+    if (randomNumber <= 22) {
+      playYesEvent();
       setEventTriggered(true);
       randomEventSelect();
+    } else {
+      playNoEvent();
     }
   }
+
+  const [noEventAudio] = useState(new Audio(noEvent));
+  const [yesEventAudio] = useState(new Audio(yesEvent));
+  const playNoEvent = () => {
+    noEventAudio.play();
+  };
+  const playYesEvent = () => {
+    yesEventAudio.play();
+  };
 
   return (
     <>
