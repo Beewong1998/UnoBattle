@@ -1,10 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function EventArea({
   eventType,
   playerNames,
   setEventTriggered,
 }) {
+  const [showEvent, setShowEvent] = useState(false);
+  //   const [showPlayersInvolved, setShowPlayersInvolved] = useState(false);
+  //   const [showInstructions, setShowInstructions] = useState(false);
+  //   const [showNextPlayer, setShowNextPlayer] = useState(false);
+
+  useEffect(() => {
+    // Add a small delay to start the animation after component mount
+    const eventDelay = setTimeout(() => setShowEvent(true), 100);
+    // const playersInvolvedDelay = setTimeout(
+    //   () => setShowPlayersInvolved(true),
+    //   1000
+    // );
+    // const showInstructionsDelay = setTimeout(
+    //   () => setShowInstructions(true),
+    //   2000
+    // );
+    // const showNextPlayerDelay = setTimeout(() => setShowNextPlayer(true), 3000);
+    return () => {
+      clearTimeout(eventDelay);
+      //   clearTimeout(playersInvolvedDelay);
+      //   clearTimeout(showInstructionsDelay);
+      //   clearTimeout(showNextPlayerDelay);
+    };
+  }, []);
   function generateTwoUniqueRandomNumbers(array) {
     // Get the size of the array
     const arraySize = array.length;
@@ -85,35 +109,51 @@ export default function EventArea({
 
   return (
     <>
-      <div className="row-start-3 row-span-8 col-start-2 col-span-10">
-        <div className="font-bold text-6xl underline bg-customRed w-full pt-4 pb-6 rounded-lg ">
+      <div className={`row-start-3 row-span-8 col-start-2 col-span-10`}>
+        <div
+          className={`font-bold text-6xl underline bg-customRed w-full pt-4 pb-6 rounded-lg event-area ${
+            showEvent ? "show-event" : ""
+          }`}
+        >
           {header}
         </div>
-        <div className="font-bold text-3xl text-center text-white underline pt-6">
-          Players involved
+        <div
+          className={`player-area ${showEvent ? "show-players-involved" : ""}`}
+        >
+          <div className="font-bold text-3xl text-center text-white underline pt-6">
+            Players involved
+          </div>
+          <div className="font-medium px-3 text-2xl bg-customYellow w-full py-4 rounded-lg mt-3">
+            {playersInvolved}
+          </div>
         </div>
-        <div className="font-medium px-3 text-2xl bg-customYellow w-full py-4 rounded-lg mt-3">
-          {playersInvolved}
-        </div>
-        <div className="font-bold text-3xl text-center text-white underline pt-6">
-          Instructions
-        </div>
-        <div className="font-medium px-3 text-2xl bg-customGreen w-full py-4 rounded-lg mt-3">
-          {instructions}
+        <div
+          className={`instruction-area ${showEvent ? "show-instructions" : ""}`}
+        >
+          <div className="font-bold text-3xl text-center text-white underline pt-6">
+            Instructions
+          </div>
+          <div className="font-medium px-3 text-2xl bg-customGreen w-full py-4 rounded-lg mt-3">
+            {instructions}
+          </div>
         </div>
         <hr className="mt-10" />
-        <div className="font-medium px-3 text-2xl bg-customLightBlue w-full py-4 rounded-lg mt-10">
-          Play will continue from{" "}
-          <span className="font-bold underline">
-            {playerNames[randomNumber1]}
-          </span>
-        </div>
-        <button
-          className="button bg-customRed text-black font-bold w-4/5 rounded-lg mt-4 text-s p-2"
-          onClick={() => setEventTriggered(false)}
+        <div
+          className={`next-player-area ${showEvent ? "show-next-player" : ""}`}
         >
-          Continue
-        </button>
+          <div className="font-medium px-3 text-2xl bg-customLightBlue w-full py-4 rounded-lg mt-10">
+            Play will continue from{" "}
+            <span className="font-bold underline">
+              {playerNames[randomNumber1]}
+            </span>
+          </div>
+          <button
+            className="button bg-customRed text-black font-bold w-4/5 rounded-lg mt-4 text-s p-2"
+            onClick={() => setEventTriggered(false)}
+          >
+            Continue
+          </button>
+        </div>
       </div>
     </>
   );

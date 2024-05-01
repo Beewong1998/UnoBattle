@@ -67,3 +67,30 @@
 .button {
   @apply font-semibold text-black w-24;
 }
+
+.event-area {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.player-area {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out 1s;
+}
+
+.instruction-area {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out 2s;
+}
+
+.next-player-area {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out 3s;
+}
+
+.event-area.show-event,
+.player-area.show-players-involved,
+.instruction-area.show-instructions,
+.next-player-area.show-next-player {
+  opacity: 1;
+}
