@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 import noEvent from "./sound-effects/noEvent.mp3";
 import yesEvent from "./sound-effects/yesEvent.mp3";
+import { pulsar } from "ldrs";
+
+pulsar.register();
 
 export default function PlayedCardButton({ setEventTriggered, setEventType }) {
+  const [isLoading, setIsLoading] = useState(false);
+
   //generate a number between 0 to 100
   function randomNumberGenerator() {
     return Math.floor(Math.random() * 101);
@@ -17,14 +22,21 @@ export default function PlayedCardButton({ setEventTriggered, setEventType }) {
 
   function handleClick() {
     const randomNumber = randomNumberGenerator();
-
-    if (randomNumber <= 22) {
-      playYesEvent();
-      setEventTriggered(true);
-      randomEventSelect();
-    } else {
+    setTimeout(() => {
       playNoEvent();
-    }
+    }, 100);
+
+    setIsLoading(true);
+    setTimeout(() => {
+      if (randomNumber <= 22) {
+        setIsLoading(false);
+        playYesEvent();
+        setEventTriggered(true);
+        randomEventSelect();
+      } else {
+        setIsLoading(false);
+      }
+    }, 1000);
   }
 
   const [noEventAudio] = useState(new Audio(noEvent));
@@ -43,7 +55,11 @@ export default function PlayedCardButton({ setEventTriggered, setEventType }) {
           className="playedCardButton active:bg-customYellowActive"
           onClick={handleClick}
         >
-          Play Card
+          {!isLoading ? (
+            "Play Card"
+          ) : (
+            <l-pulsar size="40" speed="1.75" color="black"></l-pulsar>
+          )}
         </button>
       </div>
     </>
