@@ -5,7 +5,7 @@ export default function WinnerButton({ winnerDecided, setWinnerDecided }) {
     <>
       <div className="row-start-8 row-span-1 col-start-7 col-span-4">
         <button
-          className="winnerButton"
+          className="winnerButton active:bg-customRedActive"
           onClick={() => {
             if (!winnerDecided) {
               setWinnerDecided(true);

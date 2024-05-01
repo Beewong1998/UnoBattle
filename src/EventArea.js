@@ -31,6 +31,8 @@ export default function EventArea({
     "even",
     "Uno",
   ];
+
+  const [randomNumber1] = generateTwoUniqueRandomNumbers(playerNames);
   let header = (
     <h1>
       <span className="underline">{eventType}!</span>
@@ -99,12 +101,18 @@ export default function EventArea({
         <div className="font-medium px-3 text-2xl bg-customGreen w-full py-4 rounded-lg mt-3">
           {instructions}
         </div>
-        <hr className="mt-8" />
+        <hr className="mt-10" />
+        <div className="font-medium px-3 text-2xl bg-customLightBlue w-full py-4 rounded-lg mt-10">
+          Play will continue from{" "}
+          <span className="font-bold underline">
+            {playerNames[randomNumber1]}
+          </span>
+        </div>
         <button
-          className="button bg-customRed text-black font-bold w-4/5 rounded-lg mt-6 text-s p-2"
+          className="button bg-customRed text-black font-bold w-4/5 rounded-lg mt-4 text-s p-2"
           onClick={() => setEventTriggered(false)}
         >
-          Next
+          Continue
         </button>
       </div>
     </>

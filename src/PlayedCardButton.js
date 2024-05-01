@@ -16,7 +16,7 @@ export default function PlayedCardButton({ setEventTriggered, setEventType }) {
   function handleClick() {
     const randomNumber = randomNumberGenerator();
 
-    if (randomNumber < 25) {
+    if (randomNumber < 20) {
       setEventTriggered(true);
       randomEventSelect();
     }
@@ -24,8 +24,11 @@ export default function PlayedCardButton({ setEventTriggered, setEventType }) {
 
   return (
     <>
-      <div className="row-start-5 row-span-3 col-start-3 col-span-8">
-        <button className="playedCardButton" onClick={handleClick}>
+      <div className="row-start-5 row-span-3 col-start-3 col-span-8 ">
+        <button
+          className="playedCardButton active:bg-customYellowActive"
+          onClick={handleClick}
+        >
           Play Card
         </button>
       </div>
