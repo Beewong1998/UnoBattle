@@ -7,6 +7,7 @@ import EventArea from "./EventArea";
 import WinnerButton from "./WinnerButton";
 import ScoreTracking from "./ScoreTracking";
 import ResetButton from "./ResetButton";
+import PatchNotes from "./PatchNotes";
 
 function App() {
   //checks if number of players have been confirmed
@@ -52,11 +53,13 @@ function App() {
   return (
     <div className="App bg-customDeepBlue grid grid-cols-12 grid-rows-12 w-screen h-screen grid-flow-dense">
       {!inputtedPlayers && (
-        <PlayerNumberInput
-          numberOfPlayers={numberOfPlayers}
-          handleChange={handleChange}
-          handleSubmit={handleSubmit}
-        />
+        <>
+          <PlayerNumberInput
+            numberOfPlayers={numberOfPlayers}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+          />
+        </>
       )}
       {!inputtedPlayerNames && inputtedPlayers && (
         // Render elements based on the numberOfPlayers state
@@ -119,8 +122,11 @@ function App() {
         />
       )}
       {inputtedPlayers && inputtedPlayerNames && !eventTriggered && (
-        <ResetButton />
+        <>
+          <ResetButton />
+        </>
       )}
+      <PatchNotes />
     </div>
   );
 }
