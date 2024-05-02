@@ -42,6 +42,8 @@ export default function EventArea({
     "Uno",
   ];
 
+  const colourTypes = ["green", "red", "blue", "yellow"];
+
   const [randomNumber1] = generateTwoUniqueRandomNumbers(playerNames);
   let header = (
     <h1>
@@ -65,7 +67,7 @@ export default function EventArea({
     instructions = (
       <>
         <p>
-          The player must draw cards until they get a/n{" "}
+          The player must draw cards until they get a(n){" "}
           <span className="font-bold underline">
             {cardTypes[Math.floor(Math.random() * cardTypes.length)]}
           </span>{" "}
@@ -90,7 +92,69 @@ export default function EventArea({
         </p>
       </>
     );
-    instructions = <p>The players must swap their cards with each other!</p>;
+    instructions = (
+      <p>The players must swap all their cards with each other!</p>
+    );
+  } else if (eventType.toLowerCase() == "trade and bargain") {
+    const [randomNumber1, randomNumber2] =
+      generateTwoUniqueRandomNumbers(playerNames);
+    playersInvolved = (
+      <>
+        <p>
+          The players involved are{" "}
+          <span className="font-bold underline">
+            {playerNames[randomNumber1]}
+          </span>{" "}
+          and{" "}
+          <span className="font-bold underline">
+            {playerNames[randomNumber2]}
+          </span>
+        </p>
+      </>
+    );
+    instructions = (
+      <p>
+        The players must swap{" "}
+        <span className="underline font-bold">
+          {Math.ceil(Math.random() * 2)}
+        </span>{" "}
+        card(s) with each other!
+      </p>
+    );
+  } else if (eventType.toLowerCase() == "wormhole") {
+    playersInvolved = (
+      <>
+        <p>
+          The player involved is{" "}
+          <span className="font-bold underline">
+            {playerNames[Math.floor(Math.random() * playerNames.length)]}
+          </span>
+        </p>
+      </>
+    );
+    instructions = (
+      <p>
+        The players must remove all{" "}
+        <span className="font-bold underline">
+          {cardTypes[Math.floor(Math.random() * cardTypes.length)]}
+        </span>{" "}
+        card(s) from their hand!
+      </p>
+    );
+  } else if (eventType.toLowerCase() == "shade shuffle") {
+    playersInvolved = (
+      <>
+        <p>Everyone is affected!</p>
+      </>
+    );
+    instructions = (
+      <p>
+        The colour in play has now been changed to{" "}
+        <span className="font-bold underline">
+          {colourTypes[Math.floor(Math.random() * colourTypes.length)]}
+        </span>
+      </p>
+    );
   }
 
   return (

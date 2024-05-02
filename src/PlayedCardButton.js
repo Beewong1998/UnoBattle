@@ -15,7 +15,13 @@ export default function PlayedCardButton({ setEventTriggered, setEventType }) {
 
   //select a random event type
   function randomEventSelect() {
-    const events = ["Luck of the Draw", "Swapparoo"];
+    const events = [
+      "Luck of the Draw",
+      "Swapparoo",
+      "Trade and Bargain",
+      "Wormhole",
+      "Shade Shuffle",
+    ];
     const selectedEvent = events[Math.floor(Math.random() * events.length)];
     setEventType(selectedEvent);
   }
