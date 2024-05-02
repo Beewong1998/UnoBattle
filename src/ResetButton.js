@@ -4,7 +4,7 @@ export default function ResetButton() {
   const [confirmation, setConfirmation] = useState(false);
   return (
     <>
-      <div className="row-start-8 row-span-1 col-start-3 col-span-4">
+      <div className="row-start-8 row-span-1 col-start-3 col-span-4 z-0">
         {!confirmation ? (
           <button className="resetButton" onClick={() => setConfirmation(true)}>
             Reset All
