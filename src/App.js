@@ -108,10 +108,13 @@ function App() {
       )}
 
       {inputtedPlayerNames && !eventTriggered && (
-        <WinnerButton
-          winnerDecided={winnerDecided}
-          setWinnerDecided={setWinnerDecided}
-        />
+        <>
+          <WinnerButton
+            winnerDecided={winnerDecided}
+            setWinnerDecided={setWinnerDecided}
+          />
+          <PatchNotes />
+        </>
       )}
       {winnerDecided && (
         <ScoreTracking
@@ -126,7 +129,6 @@ function App() {
           <ResetButton />
         </>
       )}
-      <PatchNotes />
     </div>
   );
 }
