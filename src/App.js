@@ -8,6 +8,7 @@ import WinnerButton from "./WinnerButton";
 import ScoreTracking from "./ScoreTracking";
 import ResetButton from "./ResetButton";
 import PatchNotes from "./PatchNotes";
+import GameRound from "./GameRound";
 
 function App() {
   //checks if number of players have been confirmed
@@ -19,6 +20,9 @@ function App() {
   const [numberOfPlayers, setNumberOfPlayers] = useState(null);
   //state for the player names
   const [playerNames, setPlayerNames] = useState([]);
+
+  //state for the game round
+  const [gameRound, setGameRound] = useState(1);
 
   //state to check if event has been triggered
   const [eventTriggered, setEventTriggered] = useState(false);
@@ -93,10 +97,13 @@ function App() {
       )}
 
       {!eventTriggered && inputtedPlayerNames && !winnerDecided && (
-        <PlayedCardButton
-          setEventTriggered={setEventTriggered}
-          setEventType={setEventType}
-        />
+        <>
+          <GameRound gameRound={gameRound} />
+          <PlayedCardButton
+            setEventTriggered={setEventTriggered}
+            setEventType={setEventType}
+          />
+        </>
       )}
 
       {eventTriggered && !winnerDecided && (
@@ -122,6 +129,7 @@ function App() {
           setScores={setScores}
           scores={scores}
           setWinnerDecided={setWinnerDecided}
+          setGameRound={setGameRound}
         />
       )}
       {inputtedPlayers && inputtedPlayerNames && !eventTriggered && (

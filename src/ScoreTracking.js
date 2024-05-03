@@ -9,6 +9,7 @@ export default function ScoreTracking({
   setScores,
   scores,
   setWinnerDecided,
+  setGameRound,
 }) {
   const [roundScores, setRoundScores] = useState(
     Array(playerNames.length).fill(0)
@@ -28,6 +29,9 @@ export default function ScoreTracking({
     setRoundScores(Array(playerNames.length).fill(0)); // Reset round scores after submission
 
     setTimeout(() => {
+      setGameRound((prev) => {
+        return (prev += 1);
+      });
       setWinnerDecided(false);
       setIsSaving(false);
     }, 2000);
