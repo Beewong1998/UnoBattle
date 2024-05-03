@@ -98,7 +98,7 @@ function App() {
 
       {!eventTriggered && inputtedPlayerNames && !winnerDecided && (
         <>
-          <GameRound gameRound={gameRound} />
+          {/* <GameRound gameRound={gameRound} /> */}
           <PlayedCardButton
             setEventTriggered={setEventTriggered}
             setEventType={setEventType}
