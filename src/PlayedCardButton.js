@@ -28,21 +28,21 @@ export default function PlayedCardButton({ setEventTriggered, setEventType }) {
 
   function handleClick() {
     const randomNumber = randomNumberGenerator();
-    setTimeout(() => {
-      playNoEvent();
-    }, 100);
 
-    setIsLoading(true);
-    setTimeout(() => {
-      if (randomNumber <= 22) {
+    if (randomNumber <= 22) {
+      setIsLoading(false);
+      playYesEvent();
+      setEventTriggered(true);
+      randomEventSelect();
+    } else {
+      setIsLoading(true);
+      setTimeout(() => {
+        playNoEvent();
+      }, 100);
+      setTimeout(() => {
         setIsLoading(false);
-        playYesEvent();
-        setEventTriggered(true);
-        randomEventSelect();
-      } else {
-        setIsLoading(false);
-      }
-    }, 1000);
+      }, 1000);
+    }
   }
 
   const [noEventAudio] = useState(new Audio(noEvent));
