@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import noEvent from "./sound-effects/noEvent.mp3";
 import yesEvent from "./sound-effects/yesEvent.mp3";
 import { pulsar } from "ldrs";
+import GameRound from "./GameRound";
 
 pulsar.register();
 
