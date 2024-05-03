@@ -99,3 +99,7 @@
 tr th {
   @apply font-semibold;
 }
+
+body {
+  orientation: portrait;
+}
