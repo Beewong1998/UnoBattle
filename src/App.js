@@ -42,6 +42,10 @@ function App() {
     e.preventDefault();
     setInputtedPlayers(true);
   }
+  function handlePlayerNameSubmit(e) {
+    e.preventDefault();
+    setInputtedPlayerNames(true);
+  }
 
   //function to save the different player names into an array
   function handlePlayerNameChange(e, index) {
@@ -68,7 +72,10 @@ function App() {
       {!inputtedPlayerNames && inputtedPlayers && (
         // Render elements based on the numberOfPlayers state
         <>
-          <div className="w-full row-start-2 row-span-6 col-start-3 col-span-8">
+          <form
+            className="w-full row-start-2 row-span-6 col-start-3 col-span-8"
+            onSubmit={handlePlayerNameSubmit}
+          >
             {Array.from({ length: numberOfPlayers }).map((_, index) => (
               <input
                 className="game-input mb-1"
@@ -86,13 +93,10 @@ function App() {
             >
               Back
             </button>
-            <button
-              className="button bg-customRed active:bg-customRedActive py-3 px-6 mt-4 rounded ml-3"
-              onClick={() => setInputtedPlayerNames(true)}
-            >
+            <button className="button bg-customRed active:bg-customRedActive py-3 px-6 mt-4 rounded ml-3">
               Next
             </button>
-          </div>
+          </form>
         </>
       )}
 
