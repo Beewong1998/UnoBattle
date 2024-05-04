@@ -9,6 +9,7 @@ import ScoreTracking from "./ScoreTracking";
 import ResetButton from "./ResetButton";
 import PatchNotes from "./PatchNotes";
 import GameRound from "./GameRound";
+import MuteButton from "./MuteButton";
 
 function App() {
   //checks if number of players have been confirmed
@@ -35,6 +36,9 @@ function App() {
   //state to keep track of scores
   const [scores, setScores] = useState(null);
 
+  //state to keep track of mute
+  const [isGlobalMuted, setIsGlobalMuted] = useState(false);
+
   function handleChange(e) {
     setNumberOfPlayers(e.target.value);
   }
@@ -55,6 +59,11 @@ function App() {
     setScores(() => Array(playerNames.length + 1).fill(0));
     console.log(playerNames);
   }
+
+  //function for the mute toggle
+  const toggleGlobalMute = () => {
+    setIsGlobalMuted(!isGlobalMuted);
+  };
 
   console.log(scores);
 
@@ -106,6 +115,11 @@ function App() {
           <PlayedCardButton
             setEventTriggered={setEventTriggered}
             setEventType={setEventType}
+            isGlobalMuted={isGlobalMuted}
+          />
+          <MuteButton
+            isGlobalMuted={isGlobalMuted}
+            toggleGlobalMute={toggleGlobalMute}
           />
         </>
       )}

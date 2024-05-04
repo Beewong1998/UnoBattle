@@ -6,7 +6,11 @@ import GameRound from "./GameRound";
 
 pulsar.register();
 
-export default function PlayedCardButton({ setEventTriggered, setEventType }) {
+export default function PlayedCardButton({
+  setEventTriggered,
+  setEventType,
+  isGlobalMuted,
+}) {
   const [isLoading, setIsLoading] = useState(false);
 
   //generate a number between 0 to 100
@@ -48,11 +52,19 @@ export default function PlayedCardButton({ setEventTriggered, setEventType }) {
 
   const [noEventAudio] = useState(new Audio(noEvent));
   const [yesEventAudio] = useState(new Audio(yesEvent));
+
   const playNoEvent = () => {
-    noEventAudio.play();
+    if (!isGlobalMuted) {
+      // Check if not globally muted
+      noEventAudio.play();
+    }
   };
+
   const playYesEvent = () => {
-    yesEventAudio.play();
+    if (!isGlobalMuted) {
+      // Check if not globally muted
+      yesEventAudio.play();
+    }
   };
 
   return (
