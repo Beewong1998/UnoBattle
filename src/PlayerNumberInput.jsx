@@ -12,6 +12,12 @@ export default function PlayerNumberInput({
           required
           className="game-input"
           onChange={handleChange}
+          onKeyPress={(e) => {
+            if (e.key === "Enter") {
+              e.preventDefault();
+              document.getElementById("nextButton").click(); // Trigger click event of the "Next" button
+            }
+          }}
           placeholder="Enter the number of players"
           type="number"
           min="2"
@@ -25,6 +31,7 @@ export default function PlayerNumberInput({
           Back
         </button>
         <button
+          id="nextButton"
           type="submit"
           className="button bg-customRed active:bg-customRedActive py-3 px-6 mt-4 rounded ml-3"
         >

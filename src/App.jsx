@@ -98,11 +98,15 @@ function App() {
 
             <button
               onClick={() => setInputtedPlayers(false)}
+              type="button"
               className="button bg-customYellow active:bg-customYellowActive font-bold py-3 px-6 mt-4 rounded mr-3"
             >
               Back
             </button>
-            <button className="button bg-customRed active:bg-customRedActive py-3 px-6 mt-4 rounded ml-3">
+            <button
+              className="button bg-customRed active:bg-customRedActive py-3 px-6 mt-4 rounded ml-3"
+              type="submit"
+            >
               Next
             </button>
           </form>
