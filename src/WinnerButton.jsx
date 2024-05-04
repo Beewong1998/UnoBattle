@@ -12,7 +12,7 @@ export default function WinnerButton({ winnerDecided, setWinnerDecided }) {
             } else setWinnerDecided(false);
           }}
         >
-          Track Winner
+          Track Score
         </button>
       </div>
     </>
