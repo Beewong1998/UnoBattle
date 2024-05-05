@@ -1,6 +1,6 @@
 # Robeeto
 
-![Uno Companion Logo](https://link-to-your-logo.com)
+<!-- ![Uno Companion Logo](https://link-to-your-logo.com) -->
 
 Robeeto is a web application designed to enhance your Uno gaming experience by introducing randomness and excitement into each round. Whether you're playing with friends or family, Robeeto adds an extra layer of fun to your games.
 
@@ -44,7 +44,7 @@ _Figure 5: Score Tracking_
 
 ## Development
 
-Robeeto was created by [Kin] with the goal of enhancing the classic Uno game. The project is built using [React.js].
+Robeeto was created by Kin with the goal of enhancing the classic Uno game. The project is built using HTML, JavaScript, React.js, and Tailwind CSS.
 
 ## Feedback
 
