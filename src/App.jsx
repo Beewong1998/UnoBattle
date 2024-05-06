@@ -138,6 +138,7 @@ function App() {
           <WinnerButton
             winnerDecided={winnerDecided}
             setWinnerDecided={setWinnerDecided}
+            isGlobalMuted={isGlobalMuted}
           />
           <PatchNotes />
         </>
@@ -149,6 +150,7 @@ function App() {
           scores={scores}
           setWinnerDecided={setWinnerDecided}
           setGameRound={setGameRound}
+          isGlobalMuted={isGlobalMuted}
         />
       )}
       {inputtedPlayers && inputtedPlayerNames && !eventTriggered && (

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "ldrs/ring";
 import { hourglass } from "ldrs";
+import noEvent from "./sound-effects/noEvent.mp3";
 
 hourglass.register();
 
@@ -10,6 +11,7 @@ export default function ScoreTracking({
   scores,
   setWinnerDecided,
   setGameRound,
+  isGlobalMuted,
 }) {
   const [roundScores, setRoundScores] = useState(
     Array(playerNames.length).fill(0)
@@ -21,8 +23,15 @@ export default function ScoreTracking({
     newRoundScores[index] = parseInt(event.target.value) || 0;
     setRoundScores(newRoundScores);
   };
-
+  const [noEventAudio] = useState(new Audio(noEvent));
+  const playSubmit = () => {
+    if (!isGlobalMuted) {
+      // Check if not globally muted
+      noEventAudio.play();
+    }
+  };
   const handleSubmit = () => {
+    playSubmit();
     setIsSaving(true);
     const newScores = scores.map((score, index) => score + roundScores[index]);
     setScores(newScores);
