@@ -10,6 +10,7 @@ export default function PatchNotes() {
         "Flow of game play improvement - There cannot be two events in a row",
         "Flow of game play improvement - One event must happen for every 5 played cards",
         "Added mute sound button",
+        "Added sound effect for track score and submit button",
         "Made patch notes look awesome",
       ],
       date: "05/05/24",
