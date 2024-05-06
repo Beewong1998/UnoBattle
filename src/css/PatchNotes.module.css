@@ -1,0 +1,33 @@
+.patch-notes-container {
+  margin: 0 auto;
+  padding: 20px;
+  @apply bg-customYellow w-full;
+}
+
+.patch-notes-header {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  font-size: 24px;
+}
+
+.patch-notes-section {
+  margin-top: 10px;
+  text-align: left;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.patch-notes-section h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.patch-notes-section li {
+  margin-bottom: 5px;
+  margin-left: 19px;
+  list-style-type: disc;
+}

@@ -82,7 +82,7 @@ export default function PlayedCardButton({
     <>
       <div className="row-start-5 row-span-3 col-start-3 col-span-8 ">
         <button
-          className={`playedCardButton active:bg-customYellowActive`}
+          className={`playedCardButton active:bg-customYellowActive `}
           onClick={handleClick}
           disabled={isLoading}
         >
