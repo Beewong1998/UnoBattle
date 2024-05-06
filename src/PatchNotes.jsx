@@ -75,7 +75,7 @@ export default function PatchNotes() {
                 }}
                 className={styles["patch-notes-return"]}
               >
-                <h1>Return to the game</h1>
+                <h1>Return to game</h1>
               </div>
               {patchData.map((patch, index) => {
                 return (
@@ -93,7 +93,7 @@ export default function PatchNotes() {
                 );
               })}
               <button
-                className="bg-customGreen text-black font-semibold w-24 h-6 rounded-2xl mt-8 mb-2 active:bg-customGreenActive text-sm shadow-md"
+                className="bg-customGreen text-black font-base w-24 h-6 rounded-2xl mt-8 mb-2 active:bg-customGreenActive text-sm shadow-md"
                 onClick={() => {
                   if (!modalOpen) {
                     setModalOpen(true);
@@ -111,7 +111,7 @@ export default function PatchNotes() {
       {!modalOpen && (
         <div className="row-start-12 row-span-1 col-start-5 col-span-4 z-20">
           <button
-            className="bg-customGreen text-black font-semibold w-24 h-6 rounded-2xl mt-2 active:bg-customGreenActive text-sm shadow-lg"
+            className="bg-customGreen text-black font-base w-24 h-6 rounded-2xl mt-2 active:bg-customGreenActive text-sm shadow-lg"
             onClick={() => {
               if (!modalOpen) {
                 setModalOpen(true);
