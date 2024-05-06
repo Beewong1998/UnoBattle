@@ -42,8 +42,7 @@ export default function PlayedCardButton({
     console.log(`countdowncooldown is ${eventTriggeredCooldown}`);
     setEventTriggered(false);
 
-    if ((randomNumber <= 22 && !eventTriggeredCooldown) || countDown == 0) {
-      setIsLoading(false);
+    if ((randomNumber <= 25 && !eventTriggeredCooldown) || countDown == 0) {
       playYesEvent();
       setEventTriggered(true);
       randomEventSelect();
