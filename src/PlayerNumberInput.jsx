@@ -5,6 +5,8 @@ export default function PlayerNumberInput({
   handleSubmit,
   numberOfPlayers,
 }) {
+  const [isVisible, setIsVisible] = useState(false);
+
   return (
     <div className="w-full row-start-6 row-span-6 col-start-3 col-span-8">
       <form onSubmit={handleSubmit}>

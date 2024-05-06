@@ -18,7 +18,7 @@ function App() {
   const [inputtedPlayerNames, setInputtedPlayerNames] = useState(false);
 
   //state for the number of players
-  const [numberOfPlayers, setNumberOfPlayers] = useState(null);
+  const [numberOfPlayers, setNumberOfPlayers] = useState("");
   //state for the player names
   const [playerNames, setPlayerNames] = useState([]);
 
@@ -70,47 +70,44 @@ function App() {
   return (
     <div className="App bg-customDeepBlue grid grid-cols-12 grid-rows-12 w-screen h-screen grid-flow-dense">
       {!inputtedPlayers && (
-        <>
-          <PlayerNumberInput
-            numberOfPlayers={numberOfPlayers}
-            handleChange={handleChange}
-            handleSubmit={handleSubmit}
-          />
-        </>
+        <PlayerNumberInput
+          numberOfPlayers={numberOfPlayers}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+        />
       )}
       {!inputtedPlayerNames && inputtedPlayers && (
         // Render elements based on the numberOfPlayers state
-        <>
-          <form
-            className="w-full row-start-2 row-span-6 col-start-3 col-span-8"
-            onSubmit={handlePlayerNameSubmit}
-          >
-            {Array.from({ length: numberOfPlayers }).map((_, index) => (
-              <input
-                className="game-input mb-1"
-                required
-                placeholder={`Enter the name of player ${index + 1}`}
-                key={index}
-                style={{ display: "block" }}
-                onChange={(e) => handlePlayerNameChange(e, index)}
-              />
-            ))}
 
-            <button
-              onClick={() => setInputtedPlayers(false)}
-              type="button"
-              className="button bg-customYellow active:bg-customYellowActive font-bold py-3 px-6 mt-4 rounded mr-3"
-            >
-              Back
-            </button>
-            <button
-              className="button bg-customRed active:bg-customRedActive py-3 px-6 mt-4 rounded ml-3"
-              type="submit"
-            >
-              Next
-            </button>
-          </form>
-        </>
+        <form
+          className="w-full row-start-2 row-span-6 col-start-3 col-span-8 "
+          onSubmit={handlePlayerNameSubmit}
+        >
+          {Array.from({ length: numberOfPlayers }).map((_, index) => (
+            <input
+              className="game-input mb-1"
+              required
+              placeholder={`Enter the name of player ${index + 1}`}
+              key={index}
+              style={{ display: "block" }}
+              onChange={(e) => handlePlayerNameChange(e, index)}
+            />
+          ))}
+
+          <button
+            onClick={() => setInputtedPlayers(false)}
+            type="button"
+            className="button bg-customYellow active:bg-customYellowActive font-bold py-3 px-6 mt-4 rounded mr-3"
+          >
+            Back
+          </button>
+          <button
+            className="button bg-customRed active:bg-customRedActive py-3 px-6 mt-4 rounded ml-3"
+            type="submit"
+          >
+            Next
+          </button>
+        </form>
       )}
 
       {!eventTriggered && inputtedPlayerNames && !winnerDecided && (
