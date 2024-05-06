@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import noEvent from "./sound-effects/noEvent.mp3";
 import yesEvent from "./sound-effects/yesEvent.mp3";
 import { pulsar } from "ldrs";
-import GameRound from "./GameRound";
 
 pulsar.register();
 
@@ -12,6 +11,10 @@ export default function PlayedCardButton({
   isGlobalMuted,
 }) {
   const [isLoading, setIsLoading] = useState(false);
+  //state to keep of how many times an event has not happened in a row
+  const [countDown, setCountDown] = useState(4);
+  //state to keep of event happening so it does not happen twice in a row
+  const [eventTriggeredCooldown, setEventTriggeredCooldown] = useState(true);
 
   //generate a number between 0 to 100
   function randomNumberGenerator() {
@@ -31,16 +34,25 @@ export default function PlayedCardButton({
     setEventType(selectedEvent);
   }
 
+  //count down to keep track of how many times an event has not happened in a row
+
   function handleClick() {
     const randomNumber = randomNumberGenerator();
+    console.log(`countDown is ${countDown}`);
+    console.log(`countdowncooldown is ${eventTriggeredCooldown}`);
+    setEventTriggered(false);
 
-    if (randomNumber <= 22) {
+    if ((randomNumber <= 22 && !eventTriggeredCooldown) || countDown == 0) {
       setIsLoading(false);
       playYesEvent();
       setEventTriggered(true);
       randomEventSelect();
     } else {
+      setEventTriggeredCooldown(false);
       setIsLoading(true);
+      setCountDown((prev) => {
+        return prev - 1;
+      });
       setTimeout(() => {
         playNoEvent();
       }, 100);
