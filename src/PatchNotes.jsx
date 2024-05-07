@@ -57,7 +57,7 @@ export default function PatchNotes() {
       version: "1.0.0",
     },
   ];
-  console.log(patchData[0].updates);
+
   return (
     <>
       {modalOpen ? (

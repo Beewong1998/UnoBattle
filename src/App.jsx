@@ -10,6 +10,7 @@ import ResetButton from "./ResetButton";
 import PatchNotes from "./PatchNotes";
 import GameRound from "./GameRound";
 import MuteButton from "./MuteButton";
+import EndGameButton from "./EndGameButton";
 
 function App() {
   //checks if number of players have been confirmed
@@ -39,6 +40,9 @@ function App() {
   //state to keep track of mute
   const [isGlobalMuted, setIsGlobalMuted] = useState(false);
 
+  //state to keep track of game end
+  const [isGameEnd, setIsGameEnd] = useState(false);
+
   function handleChange(e) {
     setNumberOfPlayers(e.target.value);
   }
@@ -57,15 +61,14 @@ function App() {
     updatedPlayerNames[index] = e.target.value;
     setPlayerNames(updatedPlayerNames);
     setScores(() => Array(playerNames.length + 1).fill(0));
-    console.log(playerNames);
   }
 
   //function for the mute toggle
   const toggleGlobalMute = () => {
     setIsGlobalMuted(!isGlobalMuted);
   };
-
-  console.log(scores);
+  console.log(`The players are ${playerNames}`);
+  console.log(`The scores are ${scores}`);
 
   return (
     <div className="App bg-customDeepBlue grid grid-cols-12 grid-rows-12 w-screen h-screen grid-flow-dense">
@@ -121,6 +124,14 @@ function App() {
           <MuteButton
             isGlobalMuted={isGlobalMuted}
             toggleGlobalMute={toggleGlobalMute}
+          />
+          <EndGameButton
+            playerNames={playerNames}
+            scores={scores}
+            isGlobalMuted={isGlobalMuted}
+            isGameEnd={isGameEnd}
+            setIsGameEnd={setIsGameEnd}
+            gameRound={gameRound}
           />
         </>
       )}
