@@ -39,7 +39,6 @@ export default function EventArea({
     "special",
     "odd",
     "even",
-    "Uno",
   ];
 
   const colourTypes = ["green", "red", "blue", "yellow"];

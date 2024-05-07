@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "ldrs/ring";
 import { hourglass } from "ldrs";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMedal } from "@fortawesome/free-solid-svg-icons";
+import styles from "./css/EndGameButton.module.css";
 
 hourglass.register();
 
@@ -14,6 +15,8 @@ export default function EndGameButton({
   setIsGameEnd,
   gameRound,
 }) {
+  const [showEvent, setShowEvent] = useState(false);
+
   const playerScores = playerNames.map((player, index) => ({
     name: player,
     score: scores[index],
@@ -23,6 +26,8 @@ export default function EndGameButton({
     (a, b) => a.score - b.score
   );
 
+  console.log(isGameEnd);
+
   return (
     <>
       {!isGameEnd && gameRound > 1 ? (
@@ -30,6 +35,8 @@ export default function EndGameButton({
           onClick={() => {
             console.log(playerScores);
             setIsGameEnd(true);
+            setShowEvent(true);
+            // setTimeout(() => setShowEvent(true), 1000);
           }}
         >
           End Game
@@ -40,6 +47,23 @@ export default function EndGameButton({
             className={`row-start-2 row-span-8 col-start-2 col-span-10 z-50`}
           >
             <div className="w-full h-full bg-customLightBlue flex flex-col justify-between">
+              <div className="p-5 h-full bg-customRed">
+                <div
+                  className={`${styles.thirdPlace} ${
+                    showEvent ? styles.show : ""
+                  } bg-customLightBlue mb-2 rounded-md`}
+                >
+                  In third place...
+                </div>
+                <div className="bg-customYellow rounded-md">{third.name}</div>
+              </div>
+
+              <div className="p-5 h-full bg-customRed">
+                <div className="bg-customLightBlue mb-2 rounded-md">
+                  The runner up...
+                </div>
+                <div className="bg-customYellow rounded-md"> {second.name}</div>
+              </div>
               <div className="p-5 h-full bg-customRed">
                 <div className="bg-customLightBlue mb-2 rounded-md">
                   The winner is...
@@ -88,7 +112,7 @@ export default function EndGameButton({
                     {!third ? "N/A" : third.name}
                   </div>
                   <div className="h-14 bg-customBronze pt-1 text-ellipsis overflow-hidden ...">
-                    {third.score} pts
+                    {!third ? "" : third.score + " pts"}
                   </div>
                 </div>
               </div>
@@ -114,6 +138,7 @@ export default function EndGameButton({
               className="mt-3"
               onClick={() => {
                 setIsGameEnd(false);
+                setShowEvent(false);
               }}
             >
               Back
