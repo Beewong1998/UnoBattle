@@ -55,7 +55,9 @@ export default function EndGameButton({
                 >
                   In third place...
                 </div>
-                <div className="bg-customYellow rounded-md">{third.name}</div>
+                <div className="bg-customYellow rounded-md">
+                  {third ? third.name : "N/A"}
+                </div>
               </div>
 
               <div className="p-5 h-full bg-customRed">
