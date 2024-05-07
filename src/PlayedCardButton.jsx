@@ -38,8 +38,7 @@ export default function PlayedCardButton({
 
   function handleClick() {
     const randomNumber = randomNumberGenerator();
-    console.log(`countDown is ${countDown}`);
-    console.log(`countdowncooldown is ${eventTriggeredCooldown}`);
+
     setEventTriggered(false);
 
     if ((randomNumber <= 25 && !eventTriggeredCooldown) || countDown == 0) {

@@ -80,7 +80,7 @@ export default function ScoreTracking({
           <tbody>{tableRows}</tbody>
         </table>
         <button
-          className="w-full bg-customGreen active:bg-customGreenActive text-black font-semibold  rounded-2xl mt-2 py-1 font-semibold"
+          className="w-full bg-customGreen active:bg-customGreenActive text-black font-base  rounded-2xl mt-2 py-1 "
           onClick={handleSubmit}
         >
           {!isSaving ? (

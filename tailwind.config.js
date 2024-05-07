@@ -13,6 +13,8 @@ module.exports = {
         customWhite: "#ECECEC",
         customGreen: "#50f3a9",
         customGreenActive: "#48e09b",
+        customSilver: "#c0c0c0",
+        customBronze: "#cc6600",
       },
     },
   },
