@@ -107,4 +107,22 @@ tr th {
   body {
     background-color: #5da2d5;
   }
+  .endGameButton {
+    @apply row-start-9 row-span-2 col-start-5 col-span-4 h-6 mx-14;
+  }
+  .endGameScreen {
+    @apply flex-row;
+  }
+  .standings {
+    @apply w-1/4 h-full;
+  }
+  .standings .name {
+    @apply h-3/4;
+  }
+  .podium {
+    @apply h-full;
+  }
+  .backToGame {
+    @apply mt-6;
+  }
 }
