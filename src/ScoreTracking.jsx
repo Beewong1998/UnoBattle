@@ -69,9 +69,13 @@ export default function ScoreTracking({
         <table className="bg-customYellow  w-full h-5/6 rounded-lg">
           <thead>
             <tr>
-              <th className="border border-customDeepBlue">Player</th>
-              <th className="border border-customDeepBlue">Total Score</th>
-              <th className="border-y border-customDeepBlue">Round Score</th>
+              <th className="border border-customDeepBlue w-1/5">Player</th>
+              <th className="border border-customDeepBlue w-1/5">
+                Total Score
+              </th>
+              <th className="border-y border-customDeepBlue w-3/5">
+                Round Score
+              </th>
             </tr>
           </thead>
           <tbody>{tableRows}</tbody>
@@ -79,7 +83,7 @@ export default function ScoreTracking({
         <table className="bg-customYellow  w-full h-1/6 rounded-lg">
           <tbody>
             <tr className="text-lg bg-customDeepBlue">
-              <td colspan="2">
+              <td className="w-2/5">
                 {" "}
                 <button
                   className="w-11/12 bg-customRed active:bg-customRedActive text-black font-base  rounded-2xl mt-2 py-1"
@@ -89,7 +93,7 @@ export default function ScoreTracking({
                 </button>
               </td>
 
-              <td>
+              <td className="w-3/5">
                 <button
                   className="w-11/12 bg-customGreen active:bg-customGreenActive text-black font-base  rounded-2xl mt-2 py-1 "
                   onClick={handleSubmit}
@@ -97,12 +101,14 @@ export default function ScoreTracking({
                   {!isSaving ? (
                     "Submit"
                   ) : (
-                    <l-hourglass
-                      size="20"
-                      bg-opacity="0.1"
-                      speed="1"
-                      color="black"
-                    ></l-hourglass>
+                    <div className="w-full">
+                      <l-hourglass
+                        size="20"
+                        bg-opacity="0.1"
+                        speed="1"
+                        color="black"
+                      ></l-hourglass>
+                    </div>
                   )}
                 </button>
               </td>
