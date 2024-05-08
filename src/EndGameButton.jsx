@@ -38,7 +38,7 @@ export default function EndGameButton({
       {showScoreboard && <Scoreboard playerScores={playerScores} />}
       {!isGameEnd && gameRound > 1 ? (
         <button
-          className={`endGameButton row-start-9 row-span-1 col-start-5 col-span-4 bg-customGreen text-black font-semibold rounded-2xl mt-10 mx-4 shadow-md `}
+          className={`endGameButton row-start-9 row-span-1 col-start-5 col-span-4 bg-customGreen active:bg-customGreenActive text-black font-semibold rounded-2xl mt-10 mx-4 shadow-md `}
           onClick={() => {
             console.log(playerScores);
             setIsGameEnd(true);
@@ -66,7 +66,7 @@ export default function EndGameButton({
                 />
               )}
             </div>
-            <div className="endGameScreen w-full h-full bg-customRed flex flex-col">
+            <div className="endGameScreen w-full lg:w-5/6 lg:mx-auto h-full bg-customRed flex flex-col">
               <div className="standings p-2 bg-customRed">
                 <div
                   className={`${styles.thirdPlace} ${
@@ -180,15 +180,15 @@ export default function EndGameButton({
                 </div>
               </div>
             </div>
-            <div className="w-full h-8 bg-customLightBlue"></div>
+            <div className="w-full lg:w-5/6 lg:mx-auto h-8 bg-customLightBlue"></div>
             <div
-              className={`backToGame text-black mt-10 h-6 w-full flex flex-row justify-around px-2 ${
+              className={`backToGame text-black mt-10 h-6 w-full lg:w-5/6 lg:mx-auto flex flex-row justify-around px-2 ${
                 styles.buttonsReveal
               } ${showEvent ? styles.show : ""} `}
             >
               {!showScoreboard ? (
                 <button
-                  className="bg-customYellow w-2/6 mr-3 rounded-2xl shadow-md "
+                  className="bg-customYellow w-2/6 mr-3 rounded-2xl shadow-md active:bg-customYellowActive"
                   disabled={buttonDisabled}
                   onClick={() => {
                     setIsGameEnd(false);
@@ -201,7 +201,7 @@ export default function EndGameButton({
                 </button>
               ) : (
                 <button
-                  className="bg-customYellow w-2/6 mr-3 rounded-2xl shadow-md "
+                  className="bg-customYellow w-2/6 mr-3 rounded-2xl shadow-md active:bg-customYellowActive"
                   disabled={buttonDisabled}
                   onClick={() => {
                     setShowScoreboard(false);
@@ -214,14 +214,14 @@ export default function EndGameButton({
 
               <button
                 disabled={buttonDisabled}
-                className="bg-customGreen w-2/6  rounded-2xl shadow-md "
+                className="bg-customGreen active:bg-customGreenActive w-2/6  rounded-2xl shadow-md "
                 onClick={() => window.location.reload()}
               >
                 New Game
               </button>
               <button
                 disabled={buttonDisabled}
-                className="bg-customYellow w-2/6 rounded-2xl ml-3 shadow-md "
+                className="bg-customYellow w-2/6 rounded-2xl ml-3 shadow-md active:bg-customYellowActive"
                 onClick={() => {
                   setShowScoreboard((prevState) => !prevState);
                 }}
