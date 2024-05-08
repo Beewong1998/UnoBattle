@@ -3,8 +3,18 @@ import styles from "./css/PatchNotes.module.css";
 
 export default function PatchNotes() {
   const [modalOpen, setModalOpen] = useState(false);
-  const version = "1.0.5";
+
   const patchData = [
+    {
+      updates: [
+        "Added end game button which shows you the top 3 players on a podium",
+        "Added transitions to the end game screen",
+        "Added scoreboard button in the end screen",
+        "Added new game button in the end screen",
+      ],
+      date: "08/05/24",
+      version: "1.1.0",
+    },
     {
       updates: [
         "Flow of game play improvement - There cannot be two events in a row",
