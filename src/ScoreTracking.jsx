@@ -53,7 +53,7 @@ export default function ScoreTracking({
       <td className="border-x border-customDeepBlue">{scores[index]}</td>
       <td>
         <input
-          className=" w-2/4 rounded-lg text-center"
+          className=" w-3/4 rounded-lg text-center"
           type="number"
           onChange={(event) => handleRoundScoreChange(index, event)}
         />
@@ -72,31 +72,33 @@ export default function ScoreTracking({
               <th className="border border-customDeepBlue">Player</th>
               <th className="border border-customDeepBlue">Total Score</th>
               <th className="border-y border-customDeepBlue">Round Score</th>
-              <th
-                className="pr-2 border-y border-customDeepBlue"
-                onClick={() => setWinnerDecided(false)}
-              >
-                X
-              </th>
             </tr>
           </thead>
           <tbody>{tableRows}</tbody>
         </table>
-        <button
-          className="w-full bg-customGreen active:bg-customGreenActive text-black font-base  rounded-2xl mt-2 py-1 "
-          onClick={handleSubmit}
-        >
-          {!isSaving ? (
-            "Submit"
-          ) : (
-            <l-hourglass
-              size="20"
-              bg-opacity="0.1"
-              speed="1"
-              color="black"
-            ></l-hourglass>
-          )}
-        </button>
+        <div className="flex flex-row justify-around">
+          <button
+            className="w-1/3  mr-2 bg-customRed active:bg-customRedActive text-black font-base  rounded-2xl mt-2 py-1 "
+            onClick={() => setWinnerDecided(false)}
+          >
+            back
+          </button>
+          <button
+            className="w-2/3  ml-2 bg-customGreen active:bg-customGreenActive text-black font-base  rounded-2xl mt-2 py-1 "
+            onClick={handleSubmit}
+          >
+            {!isSaving ? (
+              "Submit"
+            ) : (
+              <l-hourglass
+                size="20"
+                bg-opacity="0.1"
+                speed="1"
+                color="black"
+              ></l-hourglass>
+            )}
+          </button>
+        </div>
       </div>
     </>
   );
