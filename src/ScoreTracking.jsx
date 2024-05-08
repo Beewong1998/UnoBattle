@@ -66,7 +66,7 @@ export default function ScoreTracking({
       <div
         className={`row-start-2 row-span-9 col-start-1 col-span-12 px-3 z-50`}
       >
-        <table className="bg-customYellow border border-gray-400 w-full h-full rounded-lg">
+        <table className="bg-customYellow  w-full h-5/6 rounded-lg">
           <thead>
             <tr>
               <th className="border border-customDeepBlue">Player</th>
@@ -76,7 +76,41 @@ export default function ScoreTracking({
           </thead>
           <tbody>{tableRows}</tbody>
         </table>
-        <div className="flex flex-row justify-around">
+        <table className="bg-customYellow  w-full h-1/6 rounded-lg">
+          <tbody>
+            <tr className="text-lg bg-customDeepBlue">
+              <td colspan="2">
+                {" "}
+                <button
+                  className="w-11/12 bg-customRed active:bg-customRedActive text-black font-base  rounded-2xl mt-2 py-1"
+                  onClick={() => setWinnerDecided(false)}
+                >
+                  back
+                </button>
+              </td>
+
+              <td>
+                <button
+                  className="w-11/12 bg-customGreen active:bg-customGreenActive text-black font-base  rounded-2xl mt-2 py-1 "
+                  onClick={handleSubmit}
+                >
+                  {!isSaving ? (
+                    "Submit"
+                  ) : (
+                    <l-hourglass
+                      size="20"
+                      bg-opacity="0.1"
+                      speed="1"
+                      color="black"
+                    ></l-hourglass>
+                  )}
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        {/* <div className="flex flex-row justify-around">
           <button
             className="w-1/3  mr-2 bg-customRed active:bg-customRedActive text-black font-base  rounded-2xl mt-2 py-1 "
             onClick={() => setWinnerDecided(false)}
@@ -98,7 +132,7 @@ export default function ScoreTracking({
               ></l-hourglass>
             )}
           </button>
-        </div>
+        </div> */}
       </div>
     </>
   );
