@@ -4,6 +4,8 @@ import { hourglass } from "ldrs";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMedal } from "@fortawesome/free-solid-svg-icons";
 import styles from "./css/EndGameButton.module.css";
+import ConfettiExplosion from "react-confetti-explosion";
+import Scoreboard from "./Scoreboard";
 
 hourglass.register();
 
@@ -16,6 +18,9 @@ export default function EndGameButton({
   gameRound,
 }) {
   const [showEvent, setShowEvent] = useState(false);
+  const [isExploding, setIsExploding] = useState(false);
+  const [buttonDisabled, setButtonDisabled] = useState(true);
+  const [showScoreboard, setShowScoreboard] = useState(false);
 
   const playerScores = playerNames.map((player, index) => ({
     name: player,
@@ -26,17 +31,23 @@ export default function EndGameButton({
     (a, b) => a.score - b.score
   );
 
-  console.log(isGameEnd);
+  console.log(`isExploding is ${isExploding}`);
 
   return (
     <>
+      {showScoreboard && <Scoreboard playerScores={playerScores} />}
       {!isGameEnd && gameRound > 1 ? (
         <button
+          className={`endGameButton row-start-9 row-span-1 col-start-5 col-span-4 bg-customGreen active:bg-customGreenActive text-black font-semibold rounded-2xl mt-10 mx-4 shadow-md `}
           onClick={() => {
             console.log(playerScores);
             setIsGameEnd(true);
-            setShowEvent(true);
-            // setTimeout(() => setShowEvent(true), 1000);
+            setButtonDisabled(true);
+            setTimeout(() => setShowEvent(true), 500);
+            setTimeout(() => {
+              setIsExploding(true);
+              setButtonDisabled(false);
+            }, 5700);
           }}
         >
           End Game
@@ -44,39 +55,79 @@ export default function EndGameButton({
       ) : isGameEnd ? (
         <>
           <div
-            className={`row-start-2 row-span-8 col-start-2 col-span-10 z-50`}
+            className={`row-start-2 row-span-8 col-start-2 col-span-10 z-40`}
           >
-            <div className="w-full h-full bg-customLightBlue flex flex-col justify-between">
-              <div className="p-5 h-full bg-customRed">
+            <div className="w-2 mx-auto">
+              {isExploding && (
+                <ConfettiExplosion
+                  particleCount={400}
+                  duration={6000}
+                  zIndex={999}
+                />
+              )}
+            </div>
+            <div className="endGameScreen w-full lg:w-5/6 lg:mx-auto h-full bg-customRed flex flex-col">
+              <div className="standings p-2 bg-customRed">
                 <div
                   className={`${styles.thirdPlace} ${
                     showEvent ? styles.show : ""
-                  } bg-customLightBlue mb-2 rounded-md`}
+                  } bg-customLightBlue mb-2 rounded-md font-medium`}
                 >
                   In third place...
                 </div>
-                <div className="bg-customYellow rounded-md">
+                <div
+                  className={`${styles.thirdPlaceReveal} ${
+                    showEvent ? styles.show : ""
+                  } bg-customBronze rounded-md py-2 text-lg name`}
+                >
                   {third ? third.name : "N/A"}
                 </div>
               </div>
 
-              <div className="p-5 h-full bg-customRed">
-                <div className="bg-customLightBlue mb-2 rounded-md">
+              <div className="standings p-2 bg-customRed">
+                <div
+                  className={`${styles.secondPlace} ${
+                    showEvent ? styles.show : ""
+                  } bg-customLightBlue mb-2 rounded-md font-medium`}
+                >
                   The runner up...
                 </div>
-                <div className="bg-customYellow rounded-md"> {second.name}</div>
-              </div>
-              <div className="p-5 h-full bg-customRed">
-                <div className="bg-customLightBlue mb-2 rounded-md">
-                  The winner is...
+                <div
+                  className={`${styles.secondPlaceReveal} ${
+                    showEvent ? styles.show : ""
+                  } bg-customSilver rounded-md py-2 text-lg name`}
+                >
+                  {" "}
+                  {second.name}
                 </div>
-                <div className="bg-customYellow rounded-md"> {first.name}</div>
+              </div>
+              <div className="standings p-2 bg-customRed">
+                <div
+                  className={`${styles.firstPlace} ${
+                    showEvent ? styles.show : ""
+                  } bg-customLightBlue mb-2 rounded-md font-medium`}
+                >
+                  And the winner is...
+                </div>
+                <div
+                  className={`${styles.firstPlaceReveal} ${
+                    showEvent ? styles.show : ""
+                  } bg-customYellow rounded-md py-2 text-lg name`}
+                >
+                  {" "}
+                  {first.name}
+                </div>
               </div>
               <div
-                className="w-full h-3/4 bg-customRed flex flex-row items-end justify-around"
+                className="w-full h-3/4 bg-customRed flex flex-row items-end justify-around podium"
                 id="podium-container"
               >
-                <div className="w-16" id="second-place">
+                <div
+                  className={`${styles.secondPlaceReveal} ${
+                    showEvent ? styles.show : ""
+                  } w-16`}
+                  id="second-place"
+                >
                   <FontAwesomeIcon
                     size="xl"
                     icon={faMedal}
@@ -89,7 +140,12 @@ export default function EndGameButton({
                     {second.score} pts
                   </div>
                 </div>
-                <div className="w-16" id="first-place">
+                <div
+                  className={`${styles.firstPlaceReveal} ${
+                    showEvent ? styles.show : ""
+                  } w-16`}
+                  id="first-place"
+                >
                   <FontAwesomeIcon
                     size="2xl"
                     icon={faMedal}
@@ -103,7 +159,12 @@ export default function EndGameButton({
                     {first.score} pts
                   </div>
                 </div>
-                <div className="w-16" id="third-place">
+                <div
+                  className={`${styles.thirdPlaceReveal} ${
+                    showEvent ? styles.show : ""
+                  } w-16`}
+                  id="third-place"
+                >
                   <FontAwesomeIcon
                     size="lg"
                     icon={faMedal}
@@ -118,33 +179,56 @@ export default function EndGameButton({
                   </div>
                 </div>
               </div>
-              {/* <div className="flex flex-row w-full text-left mt-2">
-                {fourth && (
-                  <>
-                    <div className="w-full pl-2">
-                      4th: {fourth.name} ({fourth.score} pts)
-                    </div>
-                    {!fifth ? (
-                      <div className="w-full"></div>
-                    ) : (
-                      <div className="w-full pl-2">
-                        5th: {fifth.name} ({fifth.score} pts)
-                      </div>
-                    )}
-                  </>
-                )}
-              </div> */}
             </div>
-            <div className="w-full h-8 bg-customLightBlue"></div>
-            <button
-              className="mt-3"
-              onClick={() => {
-                setIsGameEnd(false);
-                setShowEvent(false);
-              }}
+            <div className="w-full lg:w-5/6 lg:mx-auto h-8 bg-customLightBlue"></div>
+            <div
+              className={`backToGame text-black mt-10 h-6 w-full lg:w-5/6 lg:mx-auto flex flex-row justify-around px-2 ${
+                styles.buttonsReveal
+              } ${showEvent ? styles.show : ""} `}
             >
-              Back
-            </button>
+              {!showScoreboard ? (
+                <button
+                  className="bg-customYellow w-2/6 mr-3 rounded-2xl shadow-md active:bg-customYellowActive"
+                  disabled={buttonDisabled}
+                  onClick={() => {
+                    setIsGameEnd(false);
+                    setShowEvent(false);
+                    setIsExploding(false);
+                  }}
+                >
+                  {" "}
+                  Back
+                </button>
+              ) : (
+                <button
+                  className="bg-customYellow w-2/6 mr-3 rounded-2xl shadow-md active:bg-customYellowActive"
+                  disabled={buttonDisabled}
+                  onClick={() => {
+                    setShowScoreboard(false);
+                  }}
+                >
+                  {" "}
+                  Back
+                </button>
+              )}
+
+              <button
+                disabled={buttonDisabled}
+                className="bg-customGreen active:bg-customGreenActive w-2/6  rounded-2xl shadow-md "
+                onClick={() => window.location.reload()}
+              >
+                New Game
+              </button>
+              <button
+                disabled={buttonDisabled}
+                className="bg-customYellow w-2/6 rounded-2xl ml-3 shadow-md active:bg-customYellowActive"
+                onClick={() => {
+                  setShowScoreboard((prevState) => !prevState);
+                }}
+              >
+                Scoreboard
+              </button>
+            </div>
           </div>
         </>
       ) : (

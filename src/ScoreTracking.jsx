@@ -49,8 +49,8 @@ export default function ScoreTracking({
   // Render the table rows for each player
   const tableRows = playerNames.map((player, index) => (
     <tr className="text-lg" key={index}>
-      <td>{player}</td>
-      <td>{scores[index]}</td>
+      <td className="border-x border-customDeepBlue">{player}</td>
+      <td className="border-x border-customDeepBlue">{scores[index]}</td>
       <td>
         <input
           className=" w-2/4 rounded-lg text-center"
@@ -69,10 +69,13 @@ export default function ScoreTracking({
         <table className="bg-customYellow border border-gray-400 w-full h-full rounded-lg">
           <thead>
             <tr>
-              <th>Player</th>
-              <th>Total Score</th>
-              <th>Round Score</th>
-              <th className="pr-2" onClick={() => setWinnerDecided(false)}>
+              <th className="border border-customDeepBlue">Player</th>
+              <th className="border border-customDeepBlue">Total Score</th>
+              <th className="border-y border-customDeepBlue">Round Score</th>
+              <th
+                className="pr-2 border-y border-customDeepBlue"
+                onClick={() => setWinnerDecided(false)}
+              >
                 X
               </th>
             </tr>

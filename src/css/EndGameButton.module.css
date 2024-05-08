@@ -1,21 +1,43 @@
 .thirdPlace {
   opacity: 0;
+
   transition: opacity 0.5s ease;
 }
 
-.player-area {
+.thirdPlaceReveal {
   opacity: 0;
-  transition: opacity 0.5s ease-in-out 1s;
+
+  transition: opacity 0.5s ease 1s;
 }
 
-.instruction-area {
+.secondPlace {
   opacity: 0;
-  transition: opacity 0.5s ease-in-out 2s;
+
+  transition: opacity 0.5s ease 2s;
 }
 
-.next-player-area {
+.secondPlaceReveal {
   opacity: 0;
-  transition: opacity 0.5s ease-in-out 3s;
+
+  transition: opacity 0.5s ease 3s;
+}
+
+.firstPlace {
+  opacity: 0;
+
+  transition: opacity 0.5s ease 4s;
+}
+
+.firstPlaceReveal {
+  opacity: 0;
+
+  transition: opacity 0.5s ease 5.5s;
+}
+
+.buttonsReveal {
+  opacity: 0;
+
+  transition: opacity 0.5s ease 5.5s;
 }
 
 .show {
