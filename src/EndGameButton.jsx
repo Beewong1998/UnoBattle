@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMedal } from "@fortawesome/free-solid-svg-icons";
 import styles from "./css/EndGameButton.module.css";
 import ConfettiExplosion from "react-confetti-explosion";
+import Scoreboard from "./Scoreboard";
 
 hourglass.register();
 
@@ -19,6 +20,7 @@ export default function EndGameButton({
   const [showEvent, setShowEvent] = useState(false);
   const [isExploding, setIsExploding] = useState(false);
   const [buttonDisabled, setButtonDisabled] = useState(true);
+  const [showScoreboard, setShowScoreboard] = useState(false);
 
   const playerScores = playerNames.map((player, index) => ({
     name: player,
@@ -33,6 +35,7 @@ export default function EndGameButton({
 
   return (
     <>
+      {showScoreboard && <Scoreboard playerScores={playerScores} />}
       {!isGameEnd && gameRound > 1 ? (
         <button
           className={`endGameButton row-start-9 row-span-1 col-start-5 col-span-4 bg-customGreen text-black font-semibold rounded-2xl mt-10 mx-4 shadow-md `}
@@ -52,7 +55,7 @@ export default function EndGameButton({
       ) : isGameEnd ? (
         <>
           <div
-            className={`row-start-2 row-span-8 col-start-2 col-span-10 z-50`}
+            className={`row-start-2 row-span-8 col-start-2 col-span-10 z-40`}
           >
             <div className="w-2 mx-auto">
               {isExploding && (
@@ -176,22 +179,6 @@ export default function EndGameButton({
                   </div>
                 </div>
               </div>
-              {/* <div className="flex flex-row w-full text-left mt-2">
-                {fourth && (
-                  <>
-                    <div className="w-full pl-2">
-                      4th: {fourth.name} ({fourth.score} pts)
-                    </div>
-                    {!fifth ? (
-                      <div className="w-full"></div>
-                    ) : (
-                      <div className="w-full pl-2">
-                        5th: {fifth.name} ({fifth.score} pts)
-                      </div>
-                    )}
-                  </>
-                )}
-              </div> */}
             </div>
             <div className="w-full h-8 bg-customLightBlue"></div>
             <div
@@ -199,17 +186,32 @@ export default function EndGameButton({
                 styles.buttonsReveal
               } ${showEvent ? styles.show : ""} `}
             >
-              <button
-                className="bg-customYellow w-2/6 mr-3 rounded-2xl shadow-md "
-                disabled={buttonDisabled}
-                onClick={() => {
-                  setIsGameEnd(false);
-                  setShowEvent(false);
-                  setIsExploding(false);
-                }}
-              >
-                Back
-              </button>
+              {!showScoreboard ? (
+                <button
+                  className="bg-customYellow w-2/6 mr-3 rounded-2xl shadow-md "
+                  disabled={buttonDisabled}
+                  onClick={() => {
+                    setIsGameEnd(false);
+                    setShowEvent(false);
+                    setIsExploding(false);
+                  }}
+                >
+                  {" "}
+                  Back
+                </button>
+              ) : (
+                <button
+                  className="bg-customYellow w-2/6 mr-3 rounded-2xl shadow-md "
+                  disabled={buttonDisabled}
+                  onClick={() => {
+                    setShowScoreboard(false);
+                  }}
+                >
+                  {" "}
+                  Back
+                </button>
+              )}
+
               <button
                 disabled={buttonDisabled}
                 className="bg-customGreen w-2/6  rounded-2xl shadow-md "
@@ -221,9 +223,7 @@ export default function EndGameButton({
                 disabled={buttonDisabled}
                 className="bg-customYellow w-2/6 rounded-2xl ml-3 shadow-md "
                 onClick={() => {
-                  setIsGameEnd(false);
-                  setShowEvent(false);
-                  setIsExploding(false);
+                  setShowScoreboard((prevState) => !prevState);
                 }}
               >
                 Scoreboard
