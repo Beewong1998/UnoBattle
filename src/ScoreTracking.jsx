@@ -97,6 +97,7 @@ export default function ScoreTracking({
                 <button
                   className="w-11/12 bg-customGreen active:bg-customGreenActive text-black font-base  rounded-2xl mt-2 py-1 "
                   onClick={handleSubmit}
+                  disabled={isSaving}
                 >
                   {!isSaving ? (
                     "Submit"
