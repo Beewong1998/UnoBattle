@@ -131,6 +131,7 @@ export default function EndGameButton({
                   <FontAwesomeIcon
                     size="xl"
                     icon={faMedal}
+                    flip
                     style={{ color: "#c0c0c0" }}
                   />
                   <div className="font-medium my-2 text-ellipsis overflow-hidden ...">
@@ -149,6 +150,7 @@ export default function EndGameButton({
                   <FontAwesomeIcon
                     size="2xl"
                     icon={faMedal}
+                    bounce
                     style={{ color: "#f5d867" }}
                   />
 
@@ -168,6 +170,7 @@ export default function EndGameButton({
                   <FontAwesomeIcon
                     size="lg"
                     icon={faMedal}
+                    beat
                     style={{ color: "#cc6600" }}
                   />
 
