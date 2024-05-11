@@ -87,7 +87,11 @@ export default function ScoreTracking({
                 {" "}
                 <button
                   className="w-11/12 bg-customRed active:bg-customRedActive text-black font-base  rounded-2xl mt-2 py-1"
-                  onClick={() => setWinnerDecided(false)}
+                  onClick={() => {
+                    if (!isSaving) {
+                      setWinnerDecided(false);
+                    }
+                  }}
                 >
                   back
                 </button>
