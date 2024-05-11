@@ -6,6 +6,7 @@ import { faMedal } from "@fortawesome/free-solid-svg-icons";
 import styles from "./css/EndGameButton.module.css";
 import ConfettiExplosion from "react-confetti-explosion";
 import Scoreboard from "./Scoreboard";
+import gameEndSound from "./sound-effects/gameEndSound.mp3";
 
 hourglass.register();
 
@@ -31,7 +32,13 @@ export default function EndGameButton({
     (a, b) => a.score - b.score
   );
 
-  console.log(`isExploding is ${isExploding}`);
+  const [drumRoll] = useState(new Audio(gameEndSound));
+  const playDrumRoll = () => {
+    if (!isGlobalMuted) {
+      // Check if not globally muted
+      drumRoll.play();
+    }
+  };
 
   return (
     <>
@@ -43,6 +50,7 @@ export default function EndGameButton({
             console.log(playerScores);
             setIsGameEnd(true);
             setButtonDisabled(true);
+            playDrumRoll();
             setTimeout(() => setShowEvent(true), 500);
             setTimeout(() => {
               setIsExploding(true);
@@ -194,6 +202,8 @@ export default function EndGameButton({
                   className="bg-customYellow w-2/6 mr-3 rounded-2xl shadow-md active:bg-customYellowActive"
                   disabled={buttonDisabled}
                   onClick={() => {
+                    drumRoll.pause();
+                    drumRoll.currentTime = 0;
                     setIsGameEnd(false);
                     setShowEvent(false);
                     setIsExploding(false);

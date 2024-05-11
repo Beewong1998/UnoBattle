@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import winnerSound from "./sound-effects/winnerSound.mp3";
+import trackScore from "./sound-effects/trackScore.mp3";
 
 export default function WinnerButton({
   winnerDecided,
   setWinnerDecided,
   isGlobalMuted,
 }) {
-  const [winnerSoundAudio] = useState(new Audio(winnerSound));
+  const [trackScoreAudio] = useState(new Audio(trackScore));
   const playWinnerSound = () => {
     if (!isGlobalMuted) {
       // Check if not globally muted
-      winnerSoundAudio.play();
+      trackScoreAudio.play();
     }
   };
   return (
