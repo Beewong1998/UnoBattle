@@ -38,7 +38,7 @@ export default function EndGameButton({
       {showScoreboard && <Scoreboard playerScores={playerScores} />}
       {!isGameEnd && gameRound > 1 ? (
         <button
-          className={`endGameButton row-start-9 row-span-1 col-start-5 col-span-4 bg-customGreen active:bg-customGreenActive text-black font-semibold rounded-2xl mt-10 mx-4 shadow-md `}
+          className={`endGameButton row-start-9 row-span-1 col-start-5 col-span-4 bg-customGreen active:bg-customGreenActive text-black font-medium rounded-2xl mt-10 mx-4 shadow-md `}
           onClick={() => {
             console.log(playerScores);
             setIsGameEnd(true);
