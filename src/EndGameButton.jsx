@@ -68,8 +68,8 @@ export default function EndGameButton({
             <div className="w-2 mx-auto">
               {isExploding && (
                 <ConfettiExplosion
-                  particleCount={400}
-                  duration={6000}
+                  particleCount={300}
+                  duration={7000}
                   zIndex={999}
                 />
               )}
