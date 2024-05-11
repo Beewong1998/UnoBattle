@@ -57,11 +57,11 @@
 }
 
 .winnerButton {
-  @apply bg-customRed text-black font-semibold w-4/5 h-4/5 rounded-2xl mt-3 shadow-md;
+  @apply bg-customRed text-black font-medium w-4/5 h-4/5 rounded-2xl mt-3 shadow-md;
 }
 
 .resetButton {
-  @apply bg-customLightBlue text-black font-semibold w-4/5 h-4/5 rounded-2xl mt-3 shadow-md;
+  @apply bg-customLightBlue text-black font-medium w-4/5 h-4/5 rounded-2xl mt-3 shadow-md;
 }
 
 .button {
