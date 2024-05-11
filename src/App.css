@@ -125,4 +125,7 @@ tr th {
   .backToGame {
     @apply mt-6;
   }
+  .resetButton {
+    @apply flex flex-row justify-around;
+  }
 }
