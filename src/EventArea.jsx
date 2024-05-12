@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import TextToSpeech from "./TextToSpeech";
 
 export default function EventArea({
   eventType,
@@ -6,6 +7,7 @@ export default function EventArea({
   setEventTriggered,
 }) {
   const [showEvent, setShowEvent] = useState(false);
+  const [text, setText] = useState("Hello World This is a Test Changed it");
 
   useEffect(() => {
     // Add a small delay to start the animation after component mount
@@ -15,6 +17,7 @@ export default function EventArea({
       clearTimeout(eventDelay);
     };
   }, []);
+
   function generateTwoUniqueRandomNumbers(array) {
     // Get the size of the array
     const arraySize = array.length;
@@ -156,6 +159,20 @@ export default function EventArea({
     );
   }
 
+  // const textToSpeech = () => {
+  //   const synth = window.speechSynthesis;
+
+  //   // Ensure utterance is set and synth is resumed before speaking
+  //   setTimeout(() => {
+  //     synth.resume();
+  //     if (utterance) {
+  //       synth.speak(utterance);
+  //     }
+  //   }, 500);
+  // };
+
+  // textToSpeech();
+
   return (
     <>
       <div className={`row-start-2 row-span-8 col-start-2 col-span-10`}>
@@ -198,7 +215,9 @@ export default function EventArea({
           </div>
           <button
             className="button bg-customRed text-black font-bold w-4/5 rounded-lg mt-4 text-s p-2"
-            onClick={() => setEventTriggered(false)}
+            onClick={() => {
+              setEventTriggered(false);
+            }}
           >
             Continue
           </button>
