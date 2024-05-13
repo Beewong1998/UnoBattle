@@ -75,17 +75,17 @@
 
 .player-area {
   opacity: 0;
-  transition: opacity 0.5s ease-in-out 1s;
+  transition: opacity 0.5s ease-in-out 2s;
 }
 
 .instruction-area {
   opacity: 0;
-  transition: opacity 0.5s ease-in-out 2s;
+  transition: opacity 0.5s ease-in-out 4.5s;
 }
 
 .next-player-area {
   opacity: 0;
-  transition: opacity 0.5s ease-in-out 3s;
+  transition: opacity 0.5s ease-in-out 8s;
 }
 
 .event-area.show-event,

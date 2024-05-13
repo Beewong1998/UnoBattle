@@ -71,7 +71,7 @@ export default function PatchNotes() {
   return (
     <>
       {modalOpen ? (
-        <div className="row-start-1 row-span-10 col-start-1 col-span-10 z-10 h-screen">
+        <div className="row-start-1 row-span-10 col-start-1 col-span-10 z-50 h-screen">
           <div className="w-screen h-screen bg-customYellow">
             <div className={styles["patch-notes-container"]}>
               <div className={styles["patch-notes-header"]}>

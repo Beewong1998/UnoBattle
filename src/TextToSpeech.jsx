@@ -1,32 +1,24 @@
 import React, { useEffect, useState } from "react";
 
-const TextToSpeech = ({ text }) => {
-  const [playing, setPlaying] = useState(false);
-
+const TextToSpeech = ({ text, isGlobalMute, voice }) => {
   useEffect(() => {
-    const handleSpeech = () => {
+    if (!isGlobalMute) {
       const speechSynthesis = window.speechSynthesis;
 
       const utterance = new SpeechSynthesisUtterance(text);
+      utterance.voice = voice;
       speechSynthesis.speak(utterance);
-      setPlaying(true);
-    };
-
-    if (playing) {
-      handleSpeech();
     }
 
     return () => {
-      window.speechSynthesis.cancel();
+      // Clean up the speech synthesis when the component unmounts
+      if (!isGlobalMute) {
+        speechSynthesis.cancel();
+      }
     };
-  }, [text, playing]);
+  }, [text]);
 
-  return (
-    <div>
-      <p>{text}</p>
-      {!playing && <button onClick={() => setPlaying(true)}>Play</button>}
-    </div>
-  );
+  return <div></div>;
 };
 
 export default TextToSpeech;

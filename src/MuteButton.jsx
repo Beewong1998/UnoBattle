@@ -1,10 +1,37 @@
 import React, { useState } from "react";
 
-export default function MuteButton({ isGlobalMuted, toggleGlobalMute }) {
+export default function MuteButton({
+  isGlobalMuted,
+  toggleGlobalMute,
+  setIsGlobalMuted,
+}) {
   return (
     <>
-      <div className="row-start-1 row-span-1 col-start-12 col-span-1 z-0 mt-2 mr-2">
-        <button onClick={toggleGlobalMute}>
+      <div className="w-full">
+        <div className="flex flex-col">
+          <div className="text-left pl-1 font-semibold">
+            Mute All Game Sounds
+          </div>
+          <div className="flex flex-row">
+            <button
+              className={`${
+                isGlobalMuted && "bg-customRed"
+              } w-20 rounded-xl border`}
+              onClick={() => setIsGlobalMuted(true)}
+            >
+              Mute
+            </button>
+            <button
+              className={`${
+                !isGlobalMuted && "bg-customGreen"
+              } ml-4 w-20 rounded-xl border`}
+              onClick={() => setIsGlobalMuted(false)}
+            >
+              Unmute
+            </button>
+          </div>
+        </div>
+        {/* <button onClick={toggleGlobalMute}>
           {isGlobalMuted ? (
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -36,7 +63,7 @@ export default function MuteButton({ isGlobalMuted, toggleGlobalMute }) {
               />
             </svg>
           )}
-        </button>
+        </button> */}
       </div>
     </>
   );
