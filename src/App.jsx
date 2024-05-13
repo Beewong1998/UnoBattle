@@ -44,6 +44,7 @@ function App() {
     const voices = window.speechSynthesis.getVoices();
     return voices[0];
   });
+  const [language, setLanguage] = useState("");
 
   //state to keep track of game end
   const [isGameEnd, setIsGameEnd] = useState(false);
@@ -132,6 +133,7 @@ function App() {
             setIsGlobalMuted={setIsGlobalMuted}
             voice={voice}
             setVoice={setVoice}
+            setLanguage={setLanguage}
           />
           <EndGameButton
             playerNames={playerNames}
@@ -151,6 +153,7 @@ function App() {
           isGlobalMute={isGlobalMuted}
           setEventTriggered={setEventTriggered}
           voice={voice}
+          language={language}
         />
       )}
 

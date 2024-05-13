@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from "react";
 
-const SelectVoice = ({ voice, setVoice }) => {
+const SelectVoice = ({ voice, setVoice, setLanguage }) => {
   const speechSynthesis = window.speechSynthesis;
 
   const handleVoiceChange = (event) => {
+    const selectedVoiceName = event.target.value;
     const voices = window.speechSynthesis.getVoices();
-    setVoice(voices.find((v) => v.name === event.target.value));
+    const selectedVoice = voices.find((v) => v.name === selectedVoiceName);
+
+    if (selectedVoice) {
+      setVoice(selectedVoice);
+      setLanguage(selectedVoice.lang); // Assuming setLanguage is a function to set the language
+    }
   };
 
   return (
