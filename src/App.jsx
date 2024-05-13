@@ -9,8 +9,8 @@ import ScoreTracking from "./ScoreTracking";
 import ResetButton from "./ResetButton";
 import PatchNotes from "./PatchNotes";
 import GameRound from "./GameRound";
-import MuteButton from "./MuteButton";
 import EndGameButton from "./EndGameButton";
+import Settings from "./Settings";
 
 function App() {
   //checks if number of players have been confirmed
@@ -39,6 +39,11 @@ function App() {
 
   //state to keep track of mute
   const [isGlobalMuted, setIsGlobalMuted] = useState(false);
+  //state to keep track of text to speech voice
+  const [voice, setVoice] = useState(() => {
+    const voices = window.speechSynthesis.getVoices();
+    return voices[0];
+  });
 
   //state to keep track of game end
   const [isGameEnd, setIsGameEnd] = useState(false);
@@ -121,9 +126,12 @@ function App() {
             setEventType={setEventType}
             isGlobalMuted={isGlobalMuted}
           />
-          <MuteButton
+          <Settings
             isGlobalMuted={isGlobalMuted}
             toggleGlobalMute={toggleGlobalMute}
+            setIsGlobalMuted={setIsGlobalMuted}
+            voice={voice}
+            setVoice={setVoice}
           />
           <EndGameButton
             playerNames={playerNames}
@@ -140,7 +148,9 @@ function App() {
         <EventArea
           eventType={eventType}
           playerNames={playerNames}
+          isGlobalMute={isGlobalMuted}
           setEventTriggered={setEventTriggered}
+          voice={voice}
         />
       )}
 

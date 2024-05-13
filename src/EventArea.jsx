@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { renderToString } from "react-dom/server";
+import TextToSpeech from "./TextToSpeech";
 
 export default function EventArea({
   eventType,
   playerNames,
   setEventTriggered,
+  isGlobalMute,
+  voice,
 }) {
   const [showEvent, setShowEvent] = useState(false);
 
@@ -15,6 +19,9 @@ export default function EventArea({
       clearTimeout(eventDelay);
     };
   }, []);
+
+  let text = "";
+
   function generateTwoUniqueRandomNumbers(array) {
     // Get the size of the array
     const arraySize = array.length;
@@ -44,6 +51,15 @@ export default function EventArea({
   const colourTypes = ["green", "red", "blue", "yellow"];
 
   const [randomNumber1] = generateTwoUniqueRandomNumbers(playerNames);
+
+  const randomCardType =
+    cardTypes[Math.floor(Math.random() * cardTypes.length)];
+
+  const randomColourType =
+    colourTypes[Math.floor(Math.random() * colourTypes.length)];
+
+  const randomCardNumber = Math.ceil(Math.random() * 3);
+
   let header = (
     <h1>
       <span className="underline">{eventType}!</span>
@@ -66,11 +82,9 @@ export default function EventArea({
     instructions = (
       <>
         <p>
-          The player must draw cards until they get a(n){" "}
-          <span className="font-bold underline">
-            {cardTypes[Math.floor(Math.random() * cardTypes.length)]}
-          </span>{" "}
-          card!
+          The player must draw cards until they get{" "}
+          {/^[aeiouAEIOU].*/.test(randomCardType) ? "an" : "a"}{" "}
+          <span className="font-bold underline">{randomCardType}</span> card!
         </p>
       </>
     );
@@ -114,10 +128,8 @@ export default function EventArea({
     instructions = (
       <p>
         The players must swap{" "}
-        <span className="underline font-bold">
-          {Math.ceil(Math.random() * 2)}
-        </span>{" "}
-        card(s) with each other!
+        <span className="underline font-bold">{randomCardNumber}</span>{" "}
+        {randomCardNumber > 1 ? "cards " : "card "} with each other!
       </p>
     );
   } else if (eventType.toLowerCase() == "wormhole") {
@@ -133,11 +145,11 @@ export default function EventArea({
     );
     instructions = (
       <p>
-        The players must remove all{" "}
+        The player must remove all{" "}
         <span className="font-bold underline">
           {cardTypes[Math.floor(Math.random() * cardTypes.length)]}
         </span>{" "}
-        card(s) from their hand!
+        cards from their hand!
       </p>
     );
   } else if (eventType.toLowerCase() == "shade shuffle") {
@@ -149,12 +161,35 @@ export default function EventArea({
     instructions = (
       <p>
         The colour in play has now been changed to{" "}
-        <span className="font-bold underline">
-          {colourTypes[Math.floor(Math.random() * colourTypes.length)]}
-        </span>
+        <span className="font-bold underline">{randomColourType}</span>
       </p>
     );
   }
+  let playContinue = (
+    <p>
+      Play will continue from{" "}
+      <span className="font-bold underline">{playerNames[randomNumber1]}</span>
+    </p>
+  );
+  function removeAllHtmlTags(html) {
+    return html.replace(/<[^>]*>/g, "");
+  }
+  //converts JSX into a string
+  const createSpeechToTextParagraph = () => {
+    const eventNameString = renderToString(header);
+    const playersInvolvedString = renderToString(playersInvolved);
+    const instructionsString = renderToString(instructions);
+    const playContinueString = renderToString(playContinue);
+    text = `${eventNameString}. ${playersInvolvedString}. ${instructionsString}. ${playContinueString}`;
+    //remove all html tags from the text
+    text = removeAllHtmlTags(text);
+
+    console.log(text);
+  };
+
+  createSpeechToTextParagraph();
+
+  console.log(instructions);
 
   return (
     <>
@@ -191,14 +226,14 @@ export default function EventArea({
           className={`next-player-area ${showEvent ? "show-next-player" : ""}`}
         >
           <div className="font-medium px-3 text-2xl bg-customLightBlue w-full py-4 rounded-lg mt-10">
-            Play will continue from{" "}
-            <span className="font-bold underline">
-              {playerNames[randomNumber1]}
-            </span>
+            {playContinue}
           </div>
+          <TextToSpeech text={text} isGlobalMute={isGlobalMute} voice={voice} />
           <button
             className="button bg-customRed text-black font-bold w-4/5 rounded-lg mt-4 text-s p-2"
-            onClick={() => setEventTriggered(false)}
+            onClick={() => {
+              setEventTriggered(false);
+            }}
           >
             Continue
           </button>
