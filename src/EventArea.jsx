@@ -8,6 +8,7 @@ export default function EventArea({
   setEventTriggered,
   isGlobalMute,
   voice,
+  language,
 }) {
   const [showEvent, setShowEvent] = useState(false);
 
@@ -228,7 +229,12 @@ export default function EventArea({
           <div className="font-medium px-3 text-2xl bg-customLightBlue w-full py-4 rounded-lg mt-10">
             {playContinue}
           </div>
-          <TextToSpeech text={text} isGlobalMute={isGlobalMute} voice={voice} />
+          <TextToSpeech
+            text={text}
+            isGlobalMute={isGlobalMute}
+            voice={voice}
+            language={language}
+          />
           <button
             className="button bg-customRed text-black font-bold w-4/5 rounded-lg mt-4 text-s p-2"
             onClick={() => {

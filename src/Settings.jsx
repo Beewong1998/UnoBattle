@@ -15,6 +15,7 @@ export default function Settings({
   voice,
   setVoice,
   setIsGlobalMuted,
+  setLanguage,
 }) {
   const [isSettingOpen, setIsSettingOpen] = useState(false);
   const toggleSettings = () => {
@@ -50,7 +51,11 @@ export default function Settings({
                       style={{ color: "#c0c0c0" }}
                     />
                   </div>
-                  <SelectVoice voice={voice} setVoice={setVoice} />
+                  <SelectVoice
+                    voice={voice}
+                    setVoice={setVoice}
+                    setLanguage={setLanguage}
+                  />
                 </div>
               </div>
               <div className="bg-white  w-5/6 h-1/6 rounded-lg">
