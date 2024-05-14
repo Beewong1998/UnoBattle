@@ -47,7 +47,6 @@ export default function EndGameButton({
         <button
           className={`endGameButton row-start-9 row-span-1 col-start-5 col-span-4 bg-customGreen active:bg-customGreenActive text-black font-medium rounded-2xl mt-10 mx-4 shadow-md `}
           onClick={() => {
-            console.log(playerScores);
             setIsGameEnd(true);
             setButtonDisabled(true);
             playDrumRoll();

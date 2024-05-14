@@ -181,16 +181,12 @@ export default function EventArea({
     const playersInvolvedString = renderToString(playersInvolved);
     const instructionsString = renderToString(instructions);
     const playContinueString = renderToString(playContinue);
-    text = `${eventNameString}. ${playersInvolvedString}. ${instructionsString}. ${playContinueString}`;
+    text = `${eventNameString}. ${playersInvolvedString}. ${instructionsString}. ${playContinueString}.`;
     //remove all html tags from the text
     text = removeAllHtmlTags(text);
-
-    console.log(text);
   };
 
   createSpeechToTextParagraph();
-
-  console.log(instructions);
 
   return (
     <>
