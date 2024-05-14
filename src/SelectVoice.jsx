@@ -15,6 +15,9 @@ const SelectVoice = ({ voice, setVoice, setLanguage }) => {
   };
   const voices = window.speechSynthesis.getVoices();
   console.log(voice);
+  window.speechSynthesis.getVoices().map((voice) => {
+    console.log(voice);
+  });
 
   return (
     <div className="w-full">
@@ -24,7 +27,7 @@ const SelectVoice = ({ voice, setVoice, setLanguage }) => {
         </div>
         <select
           className="w-full "
-          value={voice.name}
+          value={voice?.name}
           onChange={handleVoiceChange}
         >
           {window.speechSynthesis.getVoices().map((voice) => (
