@@ -17,7 +17,7 @@ export default function MuteButton({
               className={`${
                 isGlobalMuted && "bg-customRed"
               } w-20 rounded-xl border`}
-              onClick={() => setIsGlobalMuted(true)}
+              onClick={() => setIsGlobalMuted(!isGlobalMuted)}
             >
               Mute
             </button>
@@ -25,7 +25,7 @@ export default function MuteButton({
               className={`${
                 !isGlobalMuted && "bg-customGreen"
               } ml-4 w-20 rounded-xl border`}
-              onClick={() => setIsGlobalMuted(false)}
+              onClick={() => setIsGlobalMuted(!isGlobalMuted)}
             >
               Unmute
             </button>
