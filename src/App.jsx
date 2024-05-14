@@ -73,8 +73,6 @@ function App() {
   const toggleGlobalMute = () => {
     setIsGlobalMuted(!isGlobalMuted);
   };
-  console.log(`The players are ${playerNames}`);
-  console.log(`The scores are ${scores}`);
 
   return (
     <div className="App bg-customDeepBlue grid grid-cols-12 grid-rows-12 w-screen h-screen grid-flow-dense ">
