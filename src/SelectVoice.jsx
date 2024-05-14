@@ -10,10 +10,11 @@ const SelectVoice = ({ voice, setVoice, setLanguage }) => {
 
     if (selectedVoice) {
       setVoice(selectedVoice);
-      setLanguage(selectedVoice.lang); // Assuming setLanguage is a function to set the language
+      setLanguage(selectedVoice.lang);
     }
   };
-
+  const voices = window.speechSynthesis.getVoices();
+  console.log(voices);
   return (
     <div className="w-full">
       <label>
