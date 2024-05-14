@@ -7,6 +7,15 @@ export default function PatchNotes() {
   const patchData = [
     {
       updates: [
+        "Added announcer for event page",
+        "Added settings cogwheel",
+        "Added option to change announcer voice",
+      ],
+      date: "14/05/24",
+      version: "1.1.1",
+    },
+    {
+      updates: [
         "Added end game button which shows you the top 3 players on a podium",
         "Added transitions to the end game screen",
         "Added scoreboard button in the end screen",
