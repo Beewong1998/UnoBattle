@@ -13,7 +13,7 @@ hourglass.register();
 export default function EndGameButton({
   playerNames,
   scores,
-  isGlobalMuted,
+  isSoundEffectMuted,
   isGameEnd,
   setIsGameEnd,
   gameRound,
@@ -34,7 +34,7 @@ export default function EndGameButton({
 
   const [drumRoll] = useState(new Audio(gameEndSound));
   const playDrumRoll = () => {
-    if (!isGlobalMuted) {
+    if (!isSoundEffectMuted) {
       // Check if not globally muted
       drumRoll.play();
     }

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 
-const TextToSpeech = ({ text, isGlobalMute, voice, language }) => {
+const TextToSpeech = ({ text, isAnnouncerMuted, voice, language }) => {
   useEffect(() => {
-    if (!isGlobalMute) {
+    if (!isAnnouncerMuted) {
       const speechSynthesis = window.speechSynthesis;
 
       const textSections = text.match(/[^.!?]+[.!?]+/g) || [];
@@ -41,11 +41,11 @@ const TextToSpeech = ({ text, isGlobalMute, voice, language }) => {
 
     return () => {
       // Clean up the speech synthesis when the component unmounts
-      if (!isGlobalMute) {
+      if (!isAnnouncerMuted) {
         speechSynthesis.cancel();
       }
     };
-  }, [isGlobalMute, text, voice, language]);
+  }, [text, voice, language]);
 
   return <div></div>;
 };

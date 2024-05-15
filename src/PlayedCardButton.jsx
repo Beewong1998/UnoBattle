@@ -8,7 +8,7 @@ pulsar.register();
 export default function PlayedCardButton({
   setEventTriggered,
   setEventType,
-  isGlobalMuted,
+  isSoundEffectMuted,
 }) {
   const [isLoading, setIsLoading] = useState(false);
   //state to keep of how many times an event has not happened in a row
@@ -64,14 +64,14 @@ export default function PlayedCardButton({
   const [yesEventAudio] = useState(new Audio(yesEvent));
 
   const playNoEvent = () => {
-    if (!isGlobalMuted) {
+    if (!isSoundEffectMuted) {
       // Check if not globally muted
       noEventAudio.play();
     }
   };
 
   const playYesEvent = () => {
-    if (!isGlobalMuted) {
+    if (!isSoundEffectMuted) {
       // Check if not globally muted
       yesEventAudio.play();
     }

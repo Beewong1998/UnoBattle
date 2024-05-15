@@ -37,8 +37,10 @@ function App() {
   //state to keep track of scores
   const [scores, setScores] = useState(null);
 
-  //state to keep track of mute
-  const [isGlobalMuted, setIsGlobalMuted] = useState(false);
+  //states to keep track of mute
+  const [isSoundEffectMuted, setIsSoundEffectMuted] = useState(false);
+  const [isAnnouncerMuted, setIsAnnouncerMuted] = useState(false);
+
   //state to keep track of text to speech voice
   const [voice, setVoice] = useState(() => {
     const voices = window.speechSynthesis.getVoices();
@@ -70,8 +72,8 @@ function App() {
   }
 
   //function for the mute toggle
-  const toggleGlobalMute = () => {
-    setIsGlobalMuted(!isGlobalMuted);
+  const toggleSoundEffectMute = () => {
+    setIsSoundEffectMuted(!isSoundEffectMuted);
   };
 
   return (
@@ -123,12 +125,14 @@ function App() {
           <PlayedCardButton
             setEventTriggered={setEventTriggered}
             setEventType={setEventType}
-            isGlobalMuted={isGlobalMuted}
+            isSoundEffectMuted={isSoundEffectMuted}
           />
           <Settings
-            isGlobalMuted={isGlobalMuted}
-            toggleGlobalMute={toggleGlobalMute}
-            setIsGlobalMuted={setIsGlobalMuted}
+            isSoundEffectMuted={isSoundEffectMuted}
+            isAnnouncerMuted={isAnnouncerMuted}
+            toggleSoundEffectMute={toggleSoundEffectMute}
+            setIsSoundEffectMuted={setIsSoundEffectMuted}
+            setIsAnnouncerMuted={setIsAnnouncerMuted}
             voice={voice}
             setVoice={setVoice}
             setLanguage={setLanguage}
@@ -136,7 +140,7 @@ function App() {
           <EndGameButton
             playerNames={playerNames}
             scores={scores}
-            isGlobalMuted={isGlobalMuted}
+            isSoundEffectMuted={isSoundEffectMuted}
             isGameEnd={isGameEnd}
             setIsGameEnd={setIsGameEnd}
             gameRound={gameRound}
@@ -148,7 +152,8 @@ function App() {
         <EventArea
           eventType={eventType}
           playerNames={playerNames}
-          isGlobalMute={isGlobalMuted}
+          isSoundEffectMuted={isSoundEffectMuted}
+          isAnnouncerMuted={isAnnouncerMuted}
           setEventTriggered={setEventTriggered}
           voice={voice}
           language={language}
@@ -160,7 +165,7 @@ function App() {
           <WinnerButton
             winnerDecided={winnerDecided}
             setWinnerDecided={setWinnerDecided}
-            isGlobalMuted={isGlobalMuted}
+            isSoundEffectMuted={isSoundEffectMuted}
           />
           <PatchNotes />
         </>
@@ -172,7 +177,7 @@ function App() {
           scores={scores}
           setWinnerDecided={setWinnerDecided}
           setGameRound={setGameRound}
-          isGlobalMuted={isGlobalMuted}
+          isSoundEffectMuted={isSoundEffectMuted}
         />
       )}
       {inputtedPlayers && inputtedPlayerNames && !eventTriggered && (

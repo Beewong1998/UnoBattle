@@ -10,11 +10,14 @@ import MuteButton from "./MuteButton";
 import SelectVoice from "./SelectVoice";
 
 export default function Settings({
-  isGlobalMuted,
-  toggleGlobalMute,
+  isGameEnd,
+  isSoundEffectMuted,
+  isAnnouncerMuted,
+  toggleSoundEffectMute,
   voice,
   setVoice,
-  setIsGlobalMuted,
+  setIsSoundEffectMuted,
+  setIsAnnouncerMuted,
   setLanguage,
 }) {
   const [isSettingOpen, setIsSettingOpen] = useState(false);
@@ -35,7 +38,7 @@ export default function Settings({
       {isSettingOpen && (
         <>
           <div
-            className={`row-start-2 row-span-9 col-start-1 col-span-12 px-3 z-40`}
+            className={`row-start-2 row-span-9 col-start-1 col-span-12 px-3 z-50`}
           >
             <div className="bg-customDeepBlue w-full h-1/12 rounded-lg text-4xl font-semibold mb-2 text-left pl-2">
               Settings
@@ -58,10 +61,10 @@ export default function Settings({
                   />
                 </div>
               </div>
-              <div className="bg-white  w-5/6 h-1/6 rounded-lg">
+              <div className="bg-white  w-5/6 h-2/6 rounded-lg">
                 <div className="flex flex-row h-full items-center pr-3">
                   <div className="w-16">
-                    {!isGlobalMuted ? (
+                    {!isSoundEffectMuted && !isAnnouncerMuted ? (
                       <FontAwesomeIcon
                         className="px-4 w-7"
                         size="xl"
@@ -79,9 +82,11 @@ export default function Settings({
                   </div>
 
                   <MuteButton
-                    isGlobalMuted={isGlobalMuted}
-                    toggleGlobalMute={toggleGlobalMute}
-                    setIsGlobalMuted={setIsGlobalMuted}
+                    isSoundEffectMuted={isSoundEffectMuted}
+                    isAnnouncerMuted={isAnnouncerMuted}
+                    toggleSoundEffectMute={toggleSoundEffectMute}
+                    setIsSoundEffectMuted={setIsSoundEffectMuted}
+                    setIsAnnouncerMuted={setIsAnnouncerMuted}
                   />
                 </div>
               </div>
