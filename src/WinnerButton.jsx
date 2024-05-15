@@ -4,11 +4,11 @@ import trackScore from "./sound-effects/trackScore.mp3";
 export default function WinnerButton({
   winnerDecided,
   setWinnerDecided,
-  isGlobalMuted,
+  isSoundEffectMuted,
 }) {
   const [trackScoreAudio] = useState(new Audio(trackScore));
   const playWinnerSound = () => {
-    if (!isGlobalMuted) {
+    if (!isSoundEffectMuted) {
       // Check if not globally muted
       trackScoreAudio.play();
     }

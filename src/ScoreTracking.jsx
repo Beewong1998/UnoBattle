@@ -11,7 +11,7 @@ export default function ScoreTracking({
   scores,
   setWinnerDecided,
   setGameRound,
-  isGlobalMuted,
+  isSoundEffectMuted,
 }) {
   const [roundScores, setRoundScores] = useState(
     Array(playerNames.length).fill(0)
@@ -25,7 +25,7 @@ export default function ScoreTracking({
   };
   const [noEventAudio] = useState(new Audio(noEvent));
   const playSubmit = () => {
-    if (!isGlobalMuted) {
+    if (!isSoundEffectMuted) {
       // Check if not globally muted
       noEventAudio.play();
     }

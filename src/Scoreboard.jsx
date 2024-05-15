@@ -4,7 +4,7 @@ import { hourglass } from "ldrs";
 
 hourglass.register();
 
-export default function Scoreboard({ playerScores, isGlobalMuted }) {
+export default function Scoreboard({ playerScores, isSoundEffectMuted }) {
   // Render the table rows for each player
   const tableRows = playerScores.map((player, index) => (
     <tr className="text-lg" key={index}>

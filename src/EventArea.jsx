@@ -7,6 +7,7 @@ export default function EventArea({
   playerNames,
   setEventTriggered,
   isGlobalMute,
+  isAnnouncerMuted,
   voice,
   language,
 }) {
@@ -227,7 +228,7 @@ export default function EventArea({
           </div>
           <TextToSpeech
             text={text}
-            isGlobalMute={isGlobalMute}
+            isAnnouncerMuted={isAnnouncerMuted}
             voice={voice}
             language={language}
           />
