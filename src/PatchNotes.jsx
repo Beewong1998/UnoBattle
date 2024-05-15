@@ -10,6 +10,7 @@ export default function PatchNotes() {
         "Added announcer for event page",
         "Added settings cogwheel",
         "Added option to change announcer voice",
+        "Added option to mute game effects and announcer voice",
       ],
       date: "14/05/24",
       version: "1.1.1",
