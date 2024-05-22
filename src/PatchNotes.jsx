@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "./css/PatchNotes.module.css";
+import { CSSTransition } from "react-transition-group";
 
 export default function PatchNotes() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -80,7 +81,15 @@ export default function PatchNotes() {
 
   return (
     <>
-      {modalOpen ? (
+      <CSSTransition
+        in={modalOpen}
+        timeout={500}
+        classNames={{
+          enter: styles["modal-enter"],
+          exit: styles["modal-exit"],
+        }}
+        unmountOnExit
+      >
         <div className="row-start-1 row-span-10 col-start-1 col-span-10 z-50 h-screen">
           <div className="w-screen h-screen bg-customYellow">
             <div className={styles["patch-notes-container"]}>
@@ -88,55 +97,39 @@ export default function PatchNotes() {
                 <h1>Patch Notes</h1>
               </div>
               <div
-                onClick={() => {
-                  if (!modalOpen) {
-                    setModalOpen(true);
-                  } else setModalOpen(false);
-                }}
+                onClick={() => setModalOpen(!modalOpen)}
                 className={styles["patch-notes-return"]}
               >
                 <h1>Return to game</h1>
               </div>
-              {patchData.map((patch, index) => {
-                return (
-                  <div className={styles["patch-notes-section"]}>
-                    <h2>
-                      <span className="font-bold">{patch.version}</span> -{" "}
-                      {patch.date}
-                    </h2>
-                    <ul>
-                      {patch.updates.map((update, index) => {
-                        return <li key={index}>{update}</li>;
-                      })}
-                    </ul>
-                  </div>
-                );
-              })}
+              {patchData.map((patch, index) => (
+                <div className={styles["patch-notes-section"]} key={index}>
+                  <h2>
+                    <span className="font-bold">{patch.version}</span> -{" "}
+                    {patch.date}
+                  </h2>
+                  <ul>
+                    {patch.updates.map((update, idx) => (
+                      <li key={idx}>{update}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
               <button
                 className="bg-customGreen text-black font-base w-24 h-6 rounded-2xl mt-8 mb-2 active:bg-customGreenActive text-sm shadow-md"
-                onClick={() => {
-                  if (!modalOpen) {
-                    setModalOpen(true);
-                  } else setModalOpen(false);
-                }}
+                onClick={() => setModalOpen(!modalOpen)}
               >
                 Patch Notes
               </button>
             </div>
           </div>
         </div>
-      ) : (
-        ""
-      )}
+      </CSSTransition>
       {!modalOpen && (
         <div className="row-start-12 row-span-1 col-start-5 col-span-4 z-20">
           <button
             className="bg-customGreen text-black font-base w-24 h-6 rounded-2xl mt-2 active:bg-customGreenActive text-sm shadow-lg"
-            onClick={() => {
-              if (!modalOpen) {
-                setModalOpen(true);
-              } else setModalOpen(false);
-            }}
+            onClick={() => setModalOpen(!modalOpen)}
           >
             Patch Notes
           </button>
