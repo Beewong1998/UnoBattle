@@ -130,6 +130,7 @@ function App() {
           <Settings
             isSoundEffectMuted={isSoundEffectMuted}
             isAnnouncerMuted={isAnnouncerMuted}
+            isGameEnd={isGameEnd}
             toggleSoundEffectMute={toggleSoundEffectMute}
             setIsSoundEffectMuted={setIsSoundEffectMuted}
             setIsAnnouncerMuted={setIsAnnouncerMuted}
