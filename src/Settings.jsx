@@ -5,6 +5,7 @@ import {
   faComment,
   faVolumeHigh,
   faVolumeXmark,
+  faAngleLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import MuteButton from "./MuteButton";
 import SelectVoice from "./SelectVoice";
@@ -21,14 +22,26 @@ export default function Settings({
   setLanguage,
 }) {
   const [isSettingOpen, setIsSettingOpen] = useState(false);
+  const [rotate, setRotate] = useState(false);
+
   const toggleSettings = () => {
     setIsSettingOpen(!isSettingOpen);
+  };
+
+  const toggleSettingsAnimation = () => {
+    setRotate(!rotate);
   };
   return (
     <>
       <div className="row-start-1  col-start-12 z-0 mt-4 mr-4">
-        <button onClick={toggleSettings}>
+        <button
+          onClick={() => {
+            toggleSettings();
+            toggleSettingsAnimation();
+          }}
+        >
           <FontAwesomeIcon
+            className={rotate ? "rotate" : ""}
             size="xl"
             icon={faGear}
             style={{ color: "#c0c0c0" }}
@@ -40,7 +53,20 @@ export default function Settings({
           <div
             className={`row-start-2 row-span-9 col-start-1 col-span-12 px-3 z-50`}
           >
-            <div className="bg-customDeepBlue w-full h-1/12 rounded-lg text-4xl font-semibold mb-2 text-left pl-2">
+            <div
+              className="pl-2 pb-2 w-16 flex items-start"
+              onClick={() => {
+                toggleSettings();
+                toggleSettingsAnimation();
+              }}
+            >
+              <FontAwesomeIcon
+                size="2xl"
+                icon={faAngleLeft}
+                style={{ color: "#c0c0c0" }}
+              />
+            </div>
+            <div className="bg-customDeepBlue w-full h-1/12 rounded-lg text-4xl font-semibold mb-2 text-left pl-4">
               Settings
             </div>
             <div className="bg-customWhite  w-full h-5/6 rounded-lg flex flex-col justify-around items-center">
