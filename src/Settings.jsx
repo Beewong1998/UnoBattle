@@ -9,6 +9,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import MuteButton from "./MuteButton";
 import SelectVoice from "./SelectVoice";
+import { CSSTransition } from "react-transition-group";
+import styles from "./css/Settings.module.css";
 
 export default function Settings({
   isGameEnd,
@@ -48,7 +50,15 @@ export default function Settings({
           />
         </button>
       </div>
-      {isSettingOpen && (
+      <CSSTransition
+        in={isSettingOpen}
+        timeout={500}
+        classNames={{
+          enter: styles["modal-enter"],
+          exit: styles["modal-exit"],
+        }}
+        unmountOnExit
+      >
         <>
           <div
             className={`row-start-2 row-span-9 col-start-1 col-span-12 px-3 z-50`}
@@ -120,9 +130,7 @@ export default function Settings({
             </div>
           </div>
         </>
-      )}
+      </CSSTransition>
     </>
   );
 }
-
-// className={`row-start-2 row-span-9 col-start-1 col-span-12 px-3 z-0`

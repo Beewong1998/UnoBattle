@@ -11,6 +11,7 @@ import PatchNotes from "./PatchNotes";
 import GameRound from "./GameRound";
 import EndGameButton from "./EndGameButton";
 import Settings from "./Settings";
+import { CSSTransition } from "react-transition-group";
 
 function App() {
   //checks if number of players have been confirmed
@@ -119,7 +120,7 @@ function App() {
         </form>
       )}
 
-      {!eventTriggered && inputtedPlayerNames && !winnerDecided && (
+      {!eventTriggered && inputtedPlayerNames && (
         <>
           <GameRound gameRound={gameRound} />
           <PlayedCardButton
@@ -171,7 +172,15 @@ function App() {
           <PatchNotes />
         </>
       )}
-      {winnerDecided && (
+      <CSSTransition
+        in={winnerDecided}
+        timeout={500}
+        classNames={{
+          enter: "modal-enter",
+          exit: "modal-exit",
+        }}
+        unmountOnExit
+      >
         <ScoreTracking
           playerNames={playerNames}
           setScores={setScores}
@@ -180,7 +189,7 @@ function App() {
           setGameRound={setGameRound}
           isSoundEffectMuted={isSoundEffectMuted}
         />
-      )}
+      </CSSTransition>
       {inputtedPlayers && inputtedPlayerNames && !eventTriggered && (
         <>
           <ResetButton />
