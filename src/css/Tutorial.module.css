@@ -1,0 +1,54 @@
+.tutorialContainer {
+  margin: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  @apply w-screen h-screen flex flex-col justify-evenly items-center z-50;
+}
+
+.contentContainer {
+  @apply flex flex-col items-center justify-evenly bg-customGreen w-3/4 h-3/4;
+}
+
+.title {
+  padding-top: 10px;
+  font-weight: 600;
+  font-size: 30px;
+}
+
+.tutorialDescription {
+  text-align: center;
+}
+
+.tutorialVideo {
+  width: 300px;
+  height: 380px;
+}
+
+.slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: max-content;
+  margin-bottom: 20px;
+}
+
+.pageCounter {
+  margin-top: 50px;
+}
+
+/* .swiperButton {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.swiperButton:hover {
+  background-color: #0056b3;
+} */

@@ -12,6 +12,7 @@ import GameRound from "./GameRound";
 import EndGameButton from "./EndGameButton";
 import Settings from "./Settings";
 import { CSSTransition } from "react-transition-group";
+import Tutorial from "./Tutorial";
 
 function App() {
   //checks if number of players have been confirmed
@@ -80,11 +81,13 @@ function App() {
   return (
     <div className="App bg-customDeepBlue grid grid-cols-12 grid-rows-12 w-screen h-screen grid-flow-dense ">
       {!inputtedPlayers && (
-        <PlayerNumberInput
-          numberOfPlayers={numberOfPlayers}
-          handleChange={handleChange}
-          handleSubmit={handleSubmit}
-        />
+        <>
+          <PlayerNumberInput
+            numberOfPlayers={numberOfPlayers}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+          />
+        </>
       )}
       {!inputtedPlayerNames && inputtedPlayers && (
         // Render elements based on the numberOfPlayers state
@@ -122,6 +125,7 @@ function App() {
 
       {!eventTriggered && inputtedPlayerNames && (
         <>
+          <Tutorial />
           <GameRound gameRound={gameRound} />
           <PlayedCardButton
             setEventTriggered={setEventTriggered}
