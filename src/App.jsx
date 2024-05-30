@@ -53,6 +53,9 @@ function App() {
   //state to keep track of game end
   const [isGameEnd, setIsGameEnd] = useState(false);
 
+  //state to keep track of tutorial
+  const [tutorialOpen, setTutorialOpen] = useState(true);
+
   function handleChange(e) {
     setNumberOfPlayers(e.target.value);
   }
@@ -122,10 +125,14 @@ function App() {
           </button>
         </form>
       )}
-
+      {inputtedPlayerNames && inputtedPlayers && tutorialOpen && (
+        <Tutorial
+          tutorialOpen={tutorialOpen}
+          setTutorialOpen={setTutorialOpen}
+        />
+      )}
       {!eventTriggered && inputtedPlayerNames && (
         <>
-          <Tutorial />
           <GameRound gameRound={gameRound} />
           <PlayedCardButton
             setEventTriggered={setEventTriggered}
@@ -142,6 +149,7 @@ function App() {
             voice={voice}
             setVoice={setVoice}
             setLanguage={setLanguage}
+            setTutorialOpen={setTutorialOpen}
           />
           <EndGameButton
             playerNames={playerNames}

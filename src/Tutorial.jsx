@@ -5,6 +5,8 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import styles from "./css/Tutorial.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 
 const videos = [
   "https://i.imgur.com/ZokGQsX.mp4",
@@ -18,50 +20,75 @@ const tutorialDescription = [
   'Press the "Play Card" button everytime you play a card in real life',
   "Events are triggered randomly",
   "Track points when someone wins.",
-  "End game to reveal the winner with the least amount of points! Enjoy!",
+  "End game to reveal the winner!",
 ];
 
-const Tutorial = () => {
+const Tutorial = ({ tutorialOpen, setTutorialOpen }) => {
   const [currentPage, setCurrentPage] = useState(0);
 
   const handleSlideChange = (swiper) => {
     setCurrentPage(swiper.activeIndex);
   };
 
+  const closeTutorial = () => {
+    setTutorialOpen(false);
+    console.log(tutorialOpen);
+  };
+
   return (
-    <div className={styles.tutorialContainer}>
-      <div className={styles.contentContainer}>
-        <div className={styles.title}>{tutorialTitle[currentPage]}</div>
-        <div className={styles.tutorialVideo}>
-          <Swiper
-            modules={[Navigation]}
-            navigation
-            spaceBetween={50}
-            slidesPerView={1}
-            onSlideChange={handleSlideChange}
-          >
-            {videos.map((video, index) => (
-              <SwiperSlide key={index}>
-                <div className={styles.slide}>
-                  <ReactPlayer
-                    url={video}
-                    playing={true}
-                    loop={true}
-                    muted={true}
-                  />
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-          <div className={styles.tutorialDescription}>
-            {tutorialDescription[currentPage]}
+    <>
+      <div onClick={closeTutorial} className={styles.tutorialContainer}>
+        <div
+          onClick={(e) => e.stopPropagation()}
+          className={styles.contentContainer}
+        >
+          <div className={styles.title}>{tutorialTitle[currentPage]}</div>
+          <div className={styles.tutorialVideo}>
+            <Swiper
+              modules={[Navigation]}
+              navigation
+              spaceBetween={50}
+              slidesPerView={1}
+              onSlideChange={handleSlideChange}
+            >
+              {videos.map((video, index) => (
+                <SwiperSlide key={index}>
+                  <div className={styles.slide}>
+                    <ReactPlayer
+                      url={video}
+                      playing={true}
+                      loop={true}
+                      muted={true}
+                    />
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+            <div className={styles.tutorialDescription}>
+              {tutorialDescription[currentPage]}
+            </div>
+          </div>
+
+          <div className={styles.pageCounter}>
+            {currentPage + 1 < videos.length ? (
+              `${currentPage + 1} /  ${videos.length}`
+            ) : (
+              <button onClick={closeTutorial} className={styles.startButton}>
+                Start Game!
+              </button>
+            )}
           </div>
         </div>
-        <div className={styles.pageCounter}>
-          {currentPage + 1} / {videos.length}
-        </div>
+
+        {currentPage + 1 < videos.length ? (
+          <button onClick={closeTutorial} className={styles.skipButton}>
+            Skip Tutorial
+          </button>
+        ) : (
+          <div className={`${styles.skipButton} !bg-transparent`} />
+        )}
       </div>
-    </div>
+    </>
   );
 };
 

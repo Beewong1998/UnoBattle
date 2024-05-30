@@ -1,11 +1,11 @@
 .tutorialContainer {
   margin: auto;
   background-color: rgba(0, 0, 0, 0.5);
-  @apply w-screen h-screen flex flex-col justify-evenly items-center z-50;
+  @apply w-screen h-screen flex flex-col justify-center items-center z-40;
 }
 
 .contentContainer {
-  @apply flex flex-col items-center justify-evenly bg-customGreen w-3/4 h-3/4;
+  @apply flex flex-col items-center justify-evenly bg-customGreen w-3/4 h-3/4 z-50;
 }
 
 .title {
@@ -35,20 +35,45 @@
   margin-top: 50px;
 }
 
-/* .swiperButton {
-  background-color: #007bff;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 10px;
-  cursor: pointer;
-  border-radius: 5px;
+.skipButton {
+  @apply w-28 h-10 mt-3 rounded-lg bg-customRed;
 }
 
-.swiperButton:hover {
-  background-color: #0056b3;
-} */
+.startButton {
+  @apply w-28 h-6  rounded-lg bg-customYellow;
+}
+
+@media screen and (height < 700px) {
+  .tutorialContainer {
+    background-color: rgba(0, 0, 0, 0.5);
+    @apply w-screen h-screen flex flex-row  z-40;
+  }
+
+  .contentContainer {
+    @apply flex flex-row items-center justify-evenly bg-customGreen w-3/4 h-5/6 z-50;
+  }
+
+  .title {
+    padding-top: 10px;
+    font-weight: 600;
+    font-size: 30px;
+    @apply w-28;
+  }
+
+  .tutorialDescription {
+    text-align: center;
+    @apply my-auto w-28;
+  }
+
+  .tutorialVideo {
+    @apply h-full w-80 flex flex-row;
+  }
+
+  .skipButton {
+    @apply w-24 h-10 ml-6 rounded-lg bg-customRed;
+  }
+
+  .startButton {
+    @apply w-16 h-12  rounded-lg bg-customYellow;
+  }
+}

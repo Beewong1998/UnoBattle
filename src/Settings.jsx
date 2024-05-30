@@ -6,6 +6,7 @@ import {
   faVolumeHigh,
   faVolumeXmark,
   faAngleLeft,
+  faQuestionCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import MuteButton from "./MuteButton";
 import SelectVoice from "./SelectVoice";
@@ -22,6 +23,7 @@ export default function Settings({
   setIsSoundEffectMuted,
   setIsAnnouncerMuted,
   setLanguage,
+  setTutorialOpen,
 }) {
   const [isSettingOpen, setIsSettingOpen] = useState(false);
   const [rotate, setRotate] = useState(false);
@@ -126,7 +128,28 @@ export default function Settings({
                   />
                 </div>
               </div>
-              <div className="bg-white  w-5/6 h-1/6 rounded-lg"></div>
+              <div className="bg-white  w-5/6 h-1/6 rounded-lg">
+                <div className="flex flex-row h-full items-center pr-3">
+                  <div className="w-14">
+                    <FontAwesomeIcon
+                      className=" w-7"
+                      size="xl"
+                      icon={faQuestionCircle}
+                      style={{ color: "#c0c0c0" }}
+                    />
+                  </div>
+
+                  <button
+                    onClick={() => {
+                      toggleSettings();
+                      setTutorialOpen(true);
+                    }}
+                    className="text-center ml-1 font-medium w-32 bg-customYellow rounded-lg active:bg-customYellowActive"
+                  >
+                    Replay tutorial
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </>

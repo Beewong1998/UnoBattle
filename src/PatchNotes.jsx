@@ -8,6 +8,14 @@ export default function PatchNotes() {
   const patchData = [
     {
       updates: [
+        "Added tutorial!",
+        "Added transition animations for different menus",
+      ],
+      date: "30/05/24",
+      version: "1.1.2",
+    },
+    {
+      updates: [
         "Added announcer for event page",
         "Added settings cogwheel",
         "Added option to change announcer voice",
