@@ -146,7 +146,7 @@ export default function Settings({
                     }}
                     className="text-center ml-1 font-medium w-32 bg-customYellow rounded-lg active:bg-customYellowActive"
                   >
-                    Replay tutorial
+                    Replay Tutorial
                   </button>
                 </div>
               </div>
