@@ -10,17 +10,25 @@ import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 
 const videos = [
   "https://i.imgur.com/ZokGQsX.mp4",
-  "https://i.imgur.com/pKteGVg.mp4",
+  "https://i.imgur.com/UxcsXoY.mp4",
   "https://i.imgur.com/CN6d3ow.mp4",
-  "https://i.imgur.com/vlI74JD.mp4",
+  "https://i.imgur.com/0YKppo0.mp4",
+  "https://i.imgur.com/OVVvT44.mp4",
 ];
 
-const tutorialTitle = ["Tutorial", "Events", "Winner", "End Game"];
+const tutorialTitle = [
+  "Tutorial",
+  "Events",
+  "End Round",
+  "New Game Round",
+  "End Game",
+];
 const tutorialDescription = [
   'Press the "Play Card" button everytime you play a card in real life',
   "Events are triggered randomly",
-  "Track points when someone wins.",
-  "End game to reveal the winner!",
+  "Track points when someone wins the round.",
+  "Continue in a new round. The round number is tracked automatically.",
+  "End game after a few rounds to reveal the overall winner!",
 ];
 
 const Tutorial = ({ tutorialOpen, setTutorialOpen }) => {
