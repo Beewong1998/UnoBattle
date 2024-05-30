@@ -7,6 +7,7 @@ import styles from "./css/EndGameButton.module.css";
 import ConfettiExplosion from "react-confetti-explosion";
 import Scoreboard from "./Scoreboard";
 import gameEndSound from "./sound-effects/gameEndSound.mp3";
+import { CSSTransition } from "react-transition-group";
 
 hourglass.register();
 
@@ -42,8 +43,19 @@ export default function EndGameButton({
 
   return (
     <>
-      {showScoreboard && <Scoreboard playerScores={playerScores} />}
-      {!isGameEnd && gameRound > 1 ? (
+      <CSSTransition
+        in={showScoreboard}
+        timeout={500}
+        classNames={{
+          enter: styles["modal-enter"],
+          exit: styles["modal-exit"],
+        }}
+        unmountOnExit
+      >
+        <Scoreboard playerScores={playerScores} />
+      </CSSTransition>
+
+      {!isGameEnd && gameRound > 1 && (
         <button
           className={`endGameButton row-start-9 row-span-1 col-start-5 col-span-4 bg-customGreen active:bg-customGreenActive text-black font-medium rounded-2xl mt-10 mx-4 shadow-md `}
           onClick={() => {
@@ -59,7 +71,16 @@ export default function EndGameButton({
         >
           End Game
         </button>
-      ) : isGameEnd ? (
+      )}
+      <CSSTransition
+        in={isGameEnd}
+        timeout={500}
+        classNames={{
+          enter: styles["modal-enter"],
+          exit: styles["modal-exit"],
+        }}
+        unmountOnExit
+      >
         <>
           <div
             className={`row-start-2 row-span-8 col-start-2 col-span-10 z-40`}
@@ -243,9 +264,7 @@ export default function EndGameButton({
             </div>
           </div>
         </>
-      ) : (
-        ""
-      )}
+      </CSSTransition>
     </>
   );
 }
