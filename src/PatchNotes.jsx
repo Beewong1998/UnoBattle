@@ -8,6 +8,14 @@ export default function PatchNotes() {
   const patchData = [
     {
       updates: [
+        "Added tutorial!",
+        "Added transition animations for different menus",
+      ],
+      date: "30/05/24",
+      version: "1.1.2",
+    },
+    {
+      updates: [
         "Added announcer for event page",
         "Added settings cogwheel",
         "Added option to change announcer voice",
@@ -97,7 +105,10 @@ export default function PatchNotes() {
                 <h1>Patch Notes</h1>
               </div>
               <div
-                onClick={() => setModalOpen(!modalOpen)}
+                onClick={() => {
+                  setModalOpen(!modalOpen);
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
                 className={styles["patch-notes-return"]}
               >
                 <h1>Return to game</h1>
@@ -117,7 +128,10 @@ export default function PatchNotes() {
               ))}
               <button
                 className="bg-customGreen text-black font-base w-24 h-6 rounded-2xl mt-8 mb-2 active:bg-customGreenActive text-sm shadow-md"
-                onClick={() => setModalOpen(!modalOpen)}
+                onClick={() => {
+                  setModalOpen(!modalOpen);
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
               >
                 Patch Notes
               </button>

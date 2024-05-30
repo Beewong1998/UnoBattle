@@ -11,6 +11,8 @@ import PatchNotes from "./PatchNotes";
 import GameRound from "./GameRound";
 import EndGameButton from "./EndGameButton";
 import Settings from "./Settings";
+import { CSSTransition } from "react-transition-group";
+import Tutorial from "./Tutorial";
 
 function App() {
   //checks if number of players have been confirmed
@@ -51,6 +53,9 @@ function App() {
   //state to keep track of game end
   const [isGameEnd, setIsGameEnd] = useState(false);
 
+  //state to keep track of tutorial
+  const [tutorialOpen, setTutorialOpen] = useState(true);
+
   function handleChange(e) {
     setNumberOfPlayers(e.target.value);
   }
@@ -79,11 +84,13 @@ function App() {
   return (
     <div className="App bg-customDeepBlue grid grid-cols-12 grid-rows-12 w-screen h-screen grid-flow-dense ">
       {!inputtedPlayers && (
-        <PlayerNumberInput
-          numberOfPlayers={numberOfPlayers}
-          handleChange={handleChange}
-          handleSubmit={handleSubmit}
-        />
+        <>
+          <PlayerNumberInput
+            numberOfPlayers={numberOfPlayers}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+          />
+        </>
       )}
       {!inputtedPlayerNames && inputtedPlayers && (
         // Render elements based on the numberOfPlayers state
@@ -118,8 +125,13 @@ function App() {
           </button>
         </form>
       )}
-
-      {!eventTriggered && inputtedPlayerNames && !winnerDecided && (
+      {inputtedPlayerNames && inputtedPlayers && tutorialOpen && (
+        <Tutorial
+          tutorialOpen={tutorialOpen}
+          setTutorialOpen={setTutorialOpen}
+        />
+      )}
+      {!eventTriggered && inputtedPlayerNames && (
         <>
           <GameRound gameRound={gameRound} />
           <PlayedCardButton
@@ -137,6 +149,7 @@ function App() {
             voice={voice}
             setVoice={setVoice}
             setLanguage={setLanguage}
+            setTutorialOpen={setTutorialOpen}
           />
           <EndGameButton
             playerNames={playerNames}
@@ -171,7 +184,15 @@ function App() {
           <PatchNotes />
         </>
       )}
-      {winnerDecided && (
+      <CSSTransition
+        in={winnerDecided}
+        timeout={500}
+        classNames={{
+          enter: "modal-enter",
+          exit: "modal-exit",
+        }}
+        unmountOnExit
+      >
         <ScoreTracking
           playerNames={playerNames}
           setScores={setScores}
@@ -180,7 +201,7 @@ function App() {
           setGameRound={setGameRound}
           isSoundEffectMuted={isSoundEffectMuted}
         />
-      )}
+      </CSSTransition>
       {inputtedPlayers && inputtedPlayerNames && !eventTriggered && (
         <>
           <ResetButton />
