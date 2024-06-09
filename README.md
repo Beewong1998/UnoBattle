@@ -34,12 +34,16 @@ _Figure 4: Event Page_
 
 _Figure 5: Score Tracking_
 
+![Reveal Overall Winner](https://i.imgur.com/mVJefwc.png)
+
+_Figure 6: Score Tracking_
+
 ## Usage
 
 1. Navigate to the Robeeto web app.
 2. Enter the number of players and their names.
 3. Begin playing Uno with the added excitement of randomized events.
-4. Use the provided buttons to track game rounds, play cards, reset the game, and track winners.
+4. Use the provided buttons to play cards, begin events (fully voiced), track game round winner, reveal overall winner after multiple games, and reset game.
 5. Enjoy a more dynamic and engaging Uno experience!
 
 ## Development
