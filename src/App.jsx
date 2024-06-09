@@ -56,6 +56,9 @@ function App() {
   //state to keep track of tutorial
   const [tutorialOpen, setTutorialOpen] = useState(true);
 
+  //state to keep track of settings
+  const [isSettingOpen, setIsSettingOpen] = useState(false);
+
   function handleChange(e) {
     setNumberOfPlayers(e.target.value);
   }
@@ -81,8 +84,15 @@ function App() {
     setIsSoundEffectMuted(!isSoundEffectMuted);
   };
 
+  const closeEverything = () => {
+    setWinnerDecided(false);
+  };
+
   return (
-    <div className="App bg-customDeepBlue grid grid-cols-12 grid-rows-12 w-screen h-screen grid-flow-dense ">
+    <div
+      className="App bg-customDeepBlue grid grid-cols-12 grid-rows-12 w-screen h-screen grid-flow-dense"
+      onClick={closeEverything}
+    >
       {!inputtedPlayers && (
         <>
           <PlayerNumberInput
@@ -150,6 +160,8 @@ function App() {
             setVoice={setVoice}
             setLanguage={setLanguage}
             setTutorialOpen={setTutorialOpen}
+            isSettingOpen={isSettingOpen}
+            setIsSettingOpen={setIsSettingOpen}
           />
           <EndGameButton
             playerNames={playerNames}

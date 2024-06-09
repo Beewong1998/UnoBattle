@@ -24,8 +24,9 @@ export default function Settings({
   setIsAnnouncerMuted,
   setLanguage,
   setTutorialOpen,
+  isSettingOpen,
+  setIsSettingOpen,
 }) {
-  const [isSettingOpen, setIsSettingOpen] = useState(false);
   const [rotate, setRotate] = useState(false);
 
   const toggleSettings = () => {
@@ -143,6 +144,7 @@ export default function Settings({
                     onClick={() => {
                       toggleSettings();
                       setTutorialOpen(true);
+                      toggleSettingsAnimation();
                     }}
                     className="text-center ml-1 font-medium w-32 bg-customYellow rounded-lg active:bg-customYellowActive"
                   >

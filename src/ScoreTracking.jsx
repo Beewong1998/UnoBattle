@@ -65,6 +65,7 @@ export default function ScoreTracking({
     <>
       <div
         className={`row-start-2 row-span-9 col-start-1 col-span-12 px-3 z-50`}
+        onClick={(e) => e.stopPropagation()}
       >
         <table className="bg-customYellow  w-full h-5/6 rounded-lg">
           <thead>

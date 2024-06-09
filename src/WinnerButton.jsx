@@ -18,11 +18,10 @@ export default function WinnerButton({
       <div className="row-start-8 row-span-1 col-start-7 col-span-4">
         <button
           className="winnerButton active:bg-customRedActive"
-          onClick={() => {
+          onClick={(e) => {
+            e.stopPropagation();
             playWinnerSound();
-            if (!winnerDecided) {
-              setWinnerDecided(true);
-            } else setWinnerDecided(false);
+            setWinnerDecided(!winnerDecided);
           }}
         >
           Track Score
