@@ -5,8 +5,6 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import styles from "./css/Tutorial.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 
 const videos = [
   "https://i.imgur.com/ZokGQsX.mp4",
@@ -19,9 +17,9 @@ const videos = [
 const tutorialTitle = [
   "Tutorial",
   "Events",
-  "End Round",
+  "End Game Round",
   "New Game Round",
-  "End Game",
+  "Overall Winner",
 ];
 const tutorialDescription = [
   'Press the "Play Card" button everytime you play a card in real life',
