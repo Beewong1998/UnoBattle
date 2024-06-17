@@ -1,4 +1,5 @@
 import logo from "./logo.svg";
+import { Analytics } from "@vercel/analytics/react";
 import "./App.css";
 import React, { useState } from "react";
 import PlayerNumberInput from "./PlayerNumberInput";
@@ -219,6 +220,7 @@ function App() {
           <ResetButton />
         </>
       )}
+      <Analytics />
     </div>
   );
 }
