@@ -27,11 +27,12 @@ export default function PlayedCardButton({
     const events = [
       "Luck of the Draw",
       "Swapparoo",
-      "Trade and Bargain",
+      "Trade & Bargain",
       "Wormhole",
       "Whopping Wormhole",
       "Shade Shuffle",
-      "Flip and Fill",
+      "Flip & Fill",
+      "Pray & Pick",
     ];
 
     if (numberOfPlayers > 3) {

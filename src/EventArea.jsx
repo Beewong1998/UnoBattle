@@ -110,7 +110,7 @@ export default function EventArea({
     instructions = (
       <p>The players must swap all their cards with each other!</p>
     );
-  } else if (eventType.toLowerCase() == "trade and bargain") {
+  } else if (eventType.toLowerCase() == "trade & bargain") {
     const [randomNumber1, randomNumber2] =
       generateTwoUniqueRandomNumbers(playerNames);
     playersInvolved = (
@@ -154,7 +154,7 @@ export default function EventArea({
         cards from their hand!
       </p>
     );
-  } else if (eventType.toLowerCase() == "flip and fill") {
+  } else if (eventType.toLowerCase() == "flip & fill") {
     playersInvolved = (
       <>
         <p>
@@ -169,6 +169,62 @@ export default function EventArea({
       <p>
         The player must flip the next card in the draw pile and draw that number
         of cards. Special cards means zero.
+      </p>
+    );
+  } else if (eventType.toLowerCase() == "pray & pick") {
+    const [randomNumber1, randomNumber2] =
+      generateTwoUniqueRandomNumbers(playerNames);
+    let randomNumber3 = Math.floor(Math.random() * playerNames.length);
+    if (randomNumber3 === randomNumber1 || randomNumber3 === randomNumber2) {
+      playersInvolved = (
+        <>
+          <p>
+            The players involved are{" "}
+            <span className="font-bold underline">
+              {playerNames[randomNumber1]}
+            </span>{" "}
+            and{" "}
+            <span className="font-bold underline">
+              {playerNames[randomNumber2]}
+            </span>{" "}
+          </p>
+        </>
+      );
+    } else {
+      playersInvolved = (
+        <>
+          <p>
+            The players involved are{" "}
+            <span className="font-bold underline">
+              {playerNames[randomNumber1]}
+            </span>{" "}
+            ,{" "}
+            <span className="font-bold underline">
+              {playerNames[randomNumber2]}
+            </span>{" "}
+            and{" "}
+            <span className="font-bold underline">
+              {playerNames[randomNumber3]}
+            </span>
+          </p>
+        </>
+      );
+    }
+
+    instructions = (
+      <p>
+        <span className="font-bold underline">
+          {playerNames[randomNumber1]}
+        </span>{" "}
+        must take a card from{" "}
+        <span className="font-bold underline">
+          {playerNames[randomNumber2]}
+        </span>
+        .{" "}
+        <span className="font-bold underline">
+          {playerNames[randomNumber3]}
+        </span>{" "}
+        must draw cards equal to the taken card. Special cards means zero.
       </p>
     );
   } else if (eventType.toLowerCase() == "whopping wormhole") {
