@@ -24,7 +24,7 @@ const tutorialTitle = [
 const tutorialDescription = [
   'Press the "Play Card" button everytime you play a card in real life',
   "Events are triggered randomly",
-  "Track points when someone wins the round.",
+  "Track points when someone wins the round. (Add up cards remaining in hand)",
   "Continue in a new round. The round number is tracked automatically.",
   "End game after a few rounds to reveal the overall winner!",
 ];
