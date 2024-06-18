@@ -171,7 +171,7 @@ export default function EventArea({
         of cards. Special cards means zero.
       </p>
     );
-  } else if (eventType.toLowerCase() == "pray & pick") {
+  } else if (eventType.toLowerCase() == "pick & pray") {
     const [randomNumber1, randomNumber2] =
       generateTwoUniqueRandomNumbers(playerNames);
     let randomNumber3 = Math.floor(Math.random() * playerNames.length);

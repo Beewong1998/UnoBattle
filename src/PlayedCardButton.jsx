@@ -32,7 +32,7 @@ export default function PlayedCardButton({
       "Whopping Wormhole",
       "Shade Shuffle",
       "Flip & Fill",
-      "Pray & Pick",
+      "Pick & Pray",
     ];
 
     if (numberOfPlayers > 3) {
