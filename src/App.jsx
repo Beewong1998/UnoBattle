@@ -149,6 +149,7 @@ function App() {
             setEventTriggered={setEventTriggered}
             setEventType={setEventType}
             isSoundEffectMuted={isSoundEffectMuted}
+            numberOfPlayers={numberOfPlayers}
           />
           <Settings
             isSoundEffectMuted={isSoundEffectMuted}
