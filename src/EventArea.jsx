@@ -154,6 +154,38 @@ export default function EventArea({
         cards from their hand!
       </p>
     );
+  } else if (eventType.toLowerCase() == "flip and fill") {
+    playersInvolved = (
+      <>
+        <p>
+          The player involved is{" "}
+          <span className="font-bold underline">
+            {playerNames[Math.floor(Math.random() * playerNames.length)]}
+          </span>
+        </p>
+      </>
+    );
+    instructions = (
+      <p>
+        The player must flip the next card in the draw pile and draw that number
+        of cards. Special cards means zero.
+      </p>
+    );
+  } else if (eventType.toLowerCase() == "whopping wormhole") {
+    playersInvolved = (
+      <>
+        <p>Everyone is affected!</p>
+      </>
+    );
+    instructions = (
+      <p>
+        Everyone must remove all{" "}
+        <span className="font-bold underline">
+          {cardTypes[Math.floor(Math.random() * cardTypes.length)]}
+        </span>{" "}
+        cards from their hand!
+      </p>
+    );
   } else if (eventType.toLowerCase() == "shade shuffle") {
     playersInvolved = (
       <>
@@ -164,6 +196,29 @@ export default function EventArea({
       <p>
         The colour in play has now been changed to{" "}
         <span className="font-bold underline">{randomColourType}</span>
+      </p>
+    );
+  } else if (eventType.toLowerCase() == "new neighbours") {
+    const [randomNumber1, randomNumber2] =
+      generateTwoUniqueRandomNumbers(playerNames);
+    playersInvolved = (
+      <>
+        <p>
+          The players involved are{" "}
+          <span className="font-bold underline">
+            {playerNames[randomNumber1]}
+          </span>{" "}
+          and{" "}
+          <span className="font-bold underline">
+            {playerNames[randomNumber2]}
+          </span>
+        </p>
+      </>
+    );
+    instructions = (
+      <p>
+        The players must <span className="font-bold underline">swap seats</span>{" "}
+        with each other!
       </p>
     );
   }

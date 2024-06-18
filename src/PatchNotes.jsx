@@ -8,6 +8,13 @@ export default function PatchNotes() {
   const patchData = [
     {
       updates: [
+        "Created 3 more events - Whopping Wormhole, Flip and Fill, New Neighbours",
+      ],
+      date: "18/06/24",
+      version: "1.1.3",
+    },
+    {
+      updates: [
         "Added tutorial!",
         "Added transition animations for different menus",
       ],

@@ -9,6 +9,7 @@ export default function PlayedCardButton({
   setEventTriggered,
   setEventType,
   isSoundEffectMuted,
+  numberOfPlayers,
 }) {
   const [isLoading, setIsLoading] = useState(false);
   //state to keep of how many times an event has not happened in a row
@@ -28,8 +29,14 @@ export default function PlayedCardButton({
       "Swapparoo",
       "Trade and Bargain",
       "Wormhole",
+      "Whopping Wormhole",
       "Shade Shuffle",
+      "Flip and Fill",
     ];
+
+    if (numberOfPlayers > 3) {
+      events.push("New Neighbours");
+    }
     const selectedEvent = events[Math.floor(Math.random() * events.length)];
     setEventType(selectedEvent);
   }
