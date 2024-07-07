@@ -4,8 +4,8 @@ const path = require("path");
 
 async function generateSitemap() {
   const sitemap = new SitemapStream({
-    hostname: "https://www.yourwebsite.com",
-  }); // Change to your domain
+    hostname: "https://uno-robeeto.vercel.app/",
+  });
   const writeStream = createWriteStream(
     path.resolve(__dirname, "public", "sitemap.xml")
   );
