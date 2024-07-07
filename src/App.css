@@ -100,6 +100,10 @@ tr th {
   @apply font-semibold;
 }
 
+#logo {
+  @apply flex flex-col w-screen row-start-2 items-center row-span-1 col-start-1 col-span-8 mt-5;
+}
+
 @media screen and (height < 700px) {
   .game-round {
     @apply row-start-3 mt-5;
@@ -127,6 +131,9 @@ tr th {
   }
   .resetButton {
     @apply flex flex-row justify-around;
+  }
+  #logo {
+    @apply flex flex-row w-screen row-start-2 justify-center row-span-3 col-start-1 col-span-8;
   }
 }
 
