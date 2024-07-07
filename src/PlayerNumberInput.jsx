@@ -25,6 +25,7 @@ export default function PlayerNumberInput({
           min="2"
           max="10"
           value={numberOfPlayers}
+          alt="Input for the number of players for the Uno Roboto inspired online app Robeeto"
         />
         <button
           disabled

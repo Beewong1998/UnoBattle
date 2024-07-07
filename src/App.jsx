@@ -97,7 +97,7 @@ function App() {
       {!inputtedPlayers && (
         <>
           <div id="logo">
-            <img src="./logo512.png" className="w-40" />
+            <img src="./logo512.png" className="w-40" alt="Robeeto Logo" />
             <img src="./title.png" className="w-60" alt="Robeeto Title Text" />
           </div>
           <PlayerNumberInput
