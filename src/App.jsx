@@ -59,6 +59,7 @@ function App() {
 
   //state to keep track of settings
   const [isSettingOpen, setIsSettingOpen] = useState(false);
+  const [rotate, setRotate] = useState(false);
 
   function handleChange(e) {
     setNumberOfPlayers(e.target.value);
@@ -86,7 +87,14 @@ function App() {
   };
 
   const closeEverything = () => {
-    setWinnerDecided(false);
+    if (winnerDecided) {
+      setWinnerDecided(false);
+    }
+
+    if (isSettingOpen) {
+      setIsSettingOpen(false);
+      setRotate(!rotate);
+    }
   };
 
   return (
@@ -168,6 +176,8 @@ function App() {
             setTutorialOpen={setTutorialOpen}
             isSettingOpen={isSettingOpen}
             setIsSettingOpen={setIsSettingOpen}
+            rotate={rotate}
+            setRotate={setRotate}
           />
           <EndGameButton
             playerNames={playerNames}

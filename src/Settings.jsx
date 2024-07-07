@@ -26,9 +26,9 @@ export default function Settings({
   setTutorialOpen,
   isSettingOpen,
   setIsSettingOpen,
+  rotate,
+  setRotate,
 }) {
-  const [rotate, setRotate] = useState(false);
-
   const toggleSettings = () => {
     setIsSettingOpen(!isSettingOpen);
   };
@@ -82,7 +82,10 @@ export default function Settings({
             <div className="bg-customDeepBlue w-full h-1/12 rounded-lg text-4xl font-semibold mb-2 text-left pl-4">
               Settings
             </div>
-            <div className="bg-customWhite  w-full h-5/6 rounded-lg flex flex-col justify-around items-center">
+            <div
+              className="bg-customWhite  w-full h-5/6 rounded-lg flex flex-col justify-around items-center"
+              onClick={(e) => e.stopPropagation()}
+            >
               <div className="bg-white  w-5/6 h-1/6 rounded-lg">
                 <div className="flex flex-row h-full items-center pr-3">
                   <div className="w-16">
