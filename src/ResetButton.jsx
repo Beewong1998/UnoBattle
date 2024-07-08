@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
-export default function ResetButton() {
-  const [confirmation, setConfirmation] = useState(false);
+export default function ResetButton({ confirmation, setConfirmation }) {
   return (
     <>
       <div className="row-start-8 row-span-1 col-start-3 col-span-4 z-0">

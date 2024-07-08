@@ -61,6 +61,9 @@ function App() {
   const [isSettingOpen, setIsSettingOpen] = useState(false);
   const [rotate, setRotate] = useState(false);
 
+  //state to keep track of reset button
+  const [confirmation, setConfirmation] = useState(false);
+
   function handleChange(e) {
     setNumberOfPlayers(e.target.value);
   }
@@ -94,6 +97,10 @@ function App() {
     if (isSettingOpen) {
       setIsSettingOpen(false);
       setRotate(!rotate);
+    }
+
+    if (confirmation) {
+      setConfirmation(false);
     }
   };
 
@@ -232,7 +239,10 @@ function App() {
       </CSSTransition>
       {inputtedPlayers && inputtedPlayerNames && !eventTriggered && (
         <>
-          <ResetButton />
+          <ResetButton
+            confirmation={confirmation}
+            setConfirmation={setConfirmation}
+          />
         </>
       )}
       <Analytics />
