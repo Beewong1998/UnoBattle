@@ -8,6 +8,14 @@ export default function PatchNotes() {
   const patchData = [
     {
       updates: [
+        "Improved quality of life for navigating the UI",
+        "Added Robeeto logo and title on home screen!",
+      ],
+      date: "08/07/24",
+      version: "1.1.4",
+    },
+    {
+      updates: [
         "Created 3 more events - Whopping Wormhole, Flip and Fill, New Neighbours",
       ],
       date: "18/06/24",
