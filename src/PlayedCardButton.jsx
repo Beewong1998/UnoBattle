@@ -35,23 +35,47 @@ export default function PlayedCardButton({
       "Shade Shuffle",
       "Flip & Fill",
       "Pick & Pray",
+    ];
+
+    const environments = [
       //environment events
       "Silent Library",
-      "Mafia Manor",
-      "Cosy Campsite",
+      // "Mafia Manor",
+      // "Cosy Campsite",
     ];
 
     if (numberOfPlayers > 3) {
       events.push("New Neighbours");
     }
 
-    let selectedEvent = events[Math.floor(Math.random() * events.length)];
+    let eventOrEnvironment = () => {
+      let randomNumber = randomNumberGenerator();
 
-    //make sure the same environment does not show up twice
-    while (selectedEvent.toLowerCase() === environment) {
+      console.log(randomNumber);
+      if (randomNumber <= 100) {
+        return "environment";
+      } else {
+        return "event";
+      }
+    };
+
+    let selectedEvent;
+
+    if (eventOrEnvironment() === "environment") {
+      selectedEvent =
+        environments[Math.floor(Math.random() * environments.length)];
+
+      console.log(selectedEvent);
+
+      while (selectedEvent.toLowerCase() === environment) {
+        selectedEvent =
+          environments[Math.floor(Math.random() * environments.length)];
+      }
+      setEventType(selectedEvent);
+    } else if (eventOrEnvironment() === "event") {
       selectedEvent = events[Math.floor(Math.random() * events.length)];
+      setEventType(selectedEvent);
     }
-    setEventType(selectedEvent);
   }
 
   //count down to keep track of how many times an event has not happened in a row

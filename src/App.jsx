@@ -68,6 +68,9 @@ function App() {
   //state to keep track of the environment
   const [environment, setEnvironment] = useState();
 
+  //state to keep track of environment information
+  const [environmentInformation, setEnvironmentInformation] = useState(false);
+
   function handleChange(e) {
     setNumberOfPlayers(e.target.value);
   }
@@ -105,6 +108,10 @@ function App() {
 
     if (confirmation) {
       setConfirmation(false);
+    }
+
+    if (environmentInformation) {
+      setEnvironmentInformation(false);
     }
   };
 
@@ -175,7 +182,11 @@ function App() {
             numberOfPlayers={numberOfPlayers}
             environment={environment}
           />
-          <Environment environment={environment} />
+          <Environment
+            environment={environment}
+            environmentInformation={environmentInformation}
+            setEnvironmentInformation={setEnvironmentInformation}
+          />
           <Settings
             isSoundEffectMuted={isSoundEffectMuted}
             isAnnouncerMuted={isAnnouncerMuted}

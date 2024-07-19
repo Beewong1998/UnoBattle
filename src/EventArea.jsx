@@ -356,11 +356,11 @@ export default function EventArea({
             {instructions}
           </div>
         </div>
-        <hr className="mt-10" />
+        <hr className="mt-6" />
         <div
           className={`next-player-area ${showEvent ? "show-next-player" : ""}`}
         >
-          <div className="font-medium px-3 text-2xl bg-customLightBlue w-full py-4 rounded-lg mt-10">
+          <div className="font-medium px-3 text-2xl bg-customLightBlue w-full py-4 rounded-lg mt-6">
             {playContinue}
           </div>
           <TextToSpeech
