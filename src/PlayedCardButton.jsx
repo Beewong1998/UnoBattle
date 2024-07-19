@@ -10,6 +10,7 @@ export default function PlayedCardButton({
   setEventType,
   isSoundEffectMuted,
   numberOfPlayers,
+  environment,
 }) {
   const [isLoading, setIsLoading] = useState(false);
   //state to keep of how many times an event has not happened in a row
@@ -25,6 +26,7 @@ export default function PlayedCardButton({
   //select a random event type
   function randomEventSelect() {
     const events = [
+      //normal events
       "Luck of the Draw",
       "Swapparoo",
       "Trade & Bargain",
@@ -33,12 +35,22 @@ export default function PlayedCardButton({
       "Shade Shuffle",
       "Flip & Fill",
       "Pick & Pray",
+      //environment events
+      "Silent Library",
+      "Mafia Manor",
+      "Cosy Campsite",
     ];
 
     if (numberOfPlayers > 3) {
       events.push("New Neighbours");
     }
-    const selectedEvent = events[Math.floor(Math.random() * events.length)];
+
+    let selectedEvent = events[Math.floor(Math.random() * events.length)];
+
+    //make sure the same environment does not show up twice
+    while (selectedEvent.toLowerCase() === environment) {
+      selectedEvent = events[Math.floor(Math.random() * events.length)];
+    }
     setEventType(selectedEvent);
   }
 

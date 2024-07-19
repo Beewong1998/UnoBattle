@@ -10,6 +10,8 @@ export default function EventArea({
   isAnnouncerMuted,
   voice,
   language,
+  setEnvironment,
+  environment,
 }) {
   const [showEvent, setShowEvent] = useState(false);
 
@@ -277,6 +279,30 @@ export default function EventArea({
         with each other!
       </p>
     );
+  } else if (eventType.toLowerCase() == "silent library") {
+    setEnvironment("silent library");
+    playersInvolved = (
+      <>
+        <p>New Environment!</p>
+      </>
+    );
+    instructions = <p>The game must now continue in complete silence.</p>;
+  } else if (eventType.toLowerCase() == "mafia manor") {
+    setEnvironment("mafia manor");
+    playersInvolved = (
+      <>
+        <p>New Environment!</p>
+      </>
+    );
+    instructions = <p>All pick up card effects are doubled.</p>;
+  } else if (eventType.toLowerCase() == "cosy campsite") {
+    setEnvironment("cosy campsite");
+    playersInvolved = (
+      <>
+        <p>New Environment!</p>
+      </>
+    );
+    instructions = <p>All pick up card effects are halved.</p>;
   }
   let playContinue = (
     <p>

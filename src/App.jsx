@@ -11,6 +11,7 @@ import ResetButton from "./ResetButton";
 import PatchNotes from "./PatchNotes";
 import GameRound from "./GameRound";
 import EndGameButton from "./EndGameButton";
+import Environment from "./Environment";
 import Settings from "./Settings";
 import { CSSTransition } from "react-transition-group";
 import Tutorial from "./Tutorial";
@@ -63,6 +64,9 @@ function App() {
 
   //state to keep track of reset button
   const [confirmation, setConfirmation] = useState(false);
+
+  //state to keep track of the environment
+  const [environment, setEnvironment] = useState();
 
   function handleChange(e) {
     setNumberOfPlayers(e.target.value);
@@ -169,7 +173,9 @@ function App() {
             setEventType={setEventType}
             isSoundEffectMuted={isSoundEffectMuted}
             numberOfPlayers={numberOfPlayers}
+            environment={environment}
           />
+          <Environment environment={environment} />
           <Settings
             isSoundEffectMuted={isSoundEffectMuted}
             isAnnouncerMuted={isAnnouncerMuted}
@@ -200,6 +206,8 @@ function App() {
       {eventTriggered && !winnerDecided && (
         <EventArea
           eventType={eventType}
+          setEnvironment={setEnvironment}
+          environment={environment}
           playerNames={playerNames}
           isSoundEffectMuted={isSoundEffectMuted}
           isAnnouncerMuted={isAnnouncerMuted}
@@ -235,6 +243,7 @@ function App() {
           setWinnerDecided={setWinnerDecided}
           setGameRound={setGameRound}
           isSoundEffectMuted={isSoundEffectMuted}
+          setEnvironment={setEnvironment}
         />
       </CSSTransition>
       {inputtedPlayers && inputtedPlayerNames && !eventTriggered && (

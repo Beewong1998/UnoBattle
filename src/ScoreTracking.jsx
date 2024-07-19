@@ -12,6 +12,7 @@ export default function ScoreTracking({
   setWinnerDecided,
   setGameRound,
   isSoundEffectMuted,
+  setEnvironment,
 }) {
   const [roundScores, setRoundScores] = useState(
     Array(playerNames.length).fill(0)
@@ -36,6 +37,7 @@ export default function ScoreTracking({
     const newScores = scores.map((score, index) => score + roundScores[index]);
     setScores(newScores);
     setRoundScores(Array(playerNames.length).fill(0)); // Reset round scores after submission
+    setEnvironment("");
 
     setTimeout(() => {
       setGameRound((prev) => {
