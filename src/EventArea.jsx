@@ -10,6 +10,8 @@ export default function EventArea({
   isAnnouncerMuted,
   voice,
   language,
+  setEnvironment,
+  environment,
 }) {
   const [showEvent, setShowEvent] = useState(false);
 
@@ -277,6 +279,30 @@ export default function EventArea({
         with each other!
       </p>
     );
+  } else if (eventType.toLowerCase() == "silent library") {
+    setEnvironment("silent library");
+    playersInvolved = (
+      <>
+        <p>New Environment!</p>
+      </>
+    );
+    instructions = <p>The game must now continue in complete silence.</p>;
+  } else if (eventType.toLowerCase() == "mafia manor") {
+    setEnvironment("mafia manor");
+    playersInvolved = (
+      <>
+        <p>New Environment!</p>
+      </>
+    );
+    instructions = <p>All pick up card effects are doubled.</p>;
+  } else if (eventType.toLowerCase() == "cosy campsite") {
+    setEnvironment("cosy campsite");
+    playersInvolved = (
+      <>
+        <p>New Environment!</p>
+      </>
+    );
+    instructions = <p>All pick up card effects are halved.</p>;
   }
   let playContinue = (
     <p>
@@ -313,7 +339,7 @@ export default function EventArea({
         <div
           className={`player-area ${showEvent ? "show-players-involved" : ""}`}
         >
-          <div className="font-bold text-3xl text-center text-white underline pt-6">
+          <div className="font-bold text-3xl text-center text-white underline pt-3">
             Players involved
           </div>
           <div className="font-medium px-3 text-2xl bg-customYellow w-full py-4 rounded-lg mt-3">
@@ -323,18 +349,18 @@ export default function EventArea({
         <div
           className={`instruction-area ${showEvent ? "show-instructions" : ""}`}
         >
-          <div className="font-bold text-3xl text-center text-white underline pt-6">
+          <div className="font-bold text-3xl text-center text-white underline pt-3">
             Instructions
           </div>
           <div className="font-medium px-3 text-2xl bg-customGreen w-full py-4 rounded-lg mt-3">
             {instructions}
           </div>
         </div>
-        <hr className="mt-10" />
+        <hr className="mt-6" />
         <div
           className={`next-player-area ${showEvent ? "show-next-player" : ""}`}
         >
-          <div className="font-medium px-3 text-2xl bg-customLightBlue w-full py-4 rounded-lg mt-10">
+          <div className="font-medium px-3 text-2xl bg-customLightBlue w-full py-4 rounded-lg mt-6">
             {playContinue}
           </div>
           <TextToSpeech

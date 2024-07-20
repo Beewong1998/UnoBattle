@@ -64,7 +64,7 @@ export default function Settings({
       >
         <>
           <div
-            className={`row-start-2 row-span-9 col-start-1 col-span-12 px-3 z-50`}
+            className={`row-start-2 row-span-9 col-start-1 col-span-12 px-3 z-50 bg-customDeepBlue`}
           >
             <div
               className="pl-2 pb-2 w-16 flex items-start"
