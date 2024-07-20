@@ -8,6 +8,16 @@ export default function PatchNotes() {
   const patchData = [
     {
       updates: [
+        "New game feature - Environments!",
+        "Environments are sustained effects that continue until the environment is replaced by a new one",
+        "Currently there are three environments - Silent Library, Cosy Campsite, and Mafia Manor. Discover what these do by playing the game!",
+        "Added Environments to the tutorial",
+      ],
+      date: "20/07/24",
+      version: "1.2.1",
+    },
+    {
+      updates: [
         "Improved quality of life for navigating the UI",
         "Added Robeeto logo and title on home screen!",
       ],

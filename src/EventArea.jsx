@@ -339,7 +339,7 @@ export default function EventArea({
         <div
           className={`player-area ${showEvent ? "show-players-involved" : ""}`}
         >
-          <div className="font-bold text-3xl text-center text-white underline pt-6">
+          <div className="font-bold text-3xl text-center text-white underline pt-3">
             Players involved
           </div>
           <div className="font-medium px-3 text-2xl bg-customYellow w-full py-4 rounded-lg mt-3">
@@ -349,7 +349,7 @@ export default function EventArea({
         <div
           className={`instruction-area ${showEvent ? "show-instructions" : ""}`}
         >
-          <div className="font-bold text-3xl text-center text-white underline pt-6">
+          <div className="font-bold text-3xl text-center text-white underline pt-3">
             Instructions
           </div>
           <div className="font-medium px-3 text-2xl bg-customGreen w-full py-4 rounded-lg mt-3">

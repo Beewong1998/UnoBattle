@@ -15,7 +15,7 @@ export default function Environment({
 }) {
   return (
     <>
-      <div className="row-start-2 row-span-1 col-start-5 col-span-4 flex justify-center">
+      <div className="row-start-2 row-span-1 col-start-5 col-span-4 flex justify-center mt-10">
         {environment && (
           <div
             className="shadow-md rounded-xl w-12 h-12 p-2 bg-customRed flex justify-center items-center cursor-pointer"
@@ -56,7 +56,7 @@ export default function Environment({
           unmountOnExit
         >
           <div
-            className={`z-50 absolute bg-customDeepBlue h-3/5 w-full top-32 flex flex-col items-center pb-6 rounded-2xl`}
+            className={`z-50 absolute bg-customDeepBlue h-3/5 w-full top-40 flex flex-col items-center pb-6 rounded-2xl`}
           >
             <div className=" w-4/5 rounded-t-lg text-4xl font-semibold text-center mt-5 py-3 bg-customLightBlue">
               {environment}

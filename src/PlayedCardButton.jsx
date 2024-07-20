@@ -40,8 +40,8 @@ export default function PlayedCardButton({
     const environments = [
       //environment events
       "Silent Library",
-      // "Mafia Manor",
-      // "Cosy Campsite",
+      "Mafia Manor",
+      "Cosy Campsite",
     ];
 
     if (numberOfPlayers > 3) {
@@ -52,7 +52,7 @@ export default function PlayedCardButton({
       let randomNumber = randomNumberGenerator();
 
       console.log(randomNumber);
-      if (randomNumber <= 100) {
+      if (randomNumber <= 25) {
         return "environment";
       } else {
         return "event";
