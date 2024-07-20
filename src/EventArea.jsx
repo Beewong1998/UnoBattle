@@ -332,7 +332,7 @@ export default function EventArea({
     <>
       <div className={`row-start-2 row-span-8 col-start-2 col-span-10`}>
         <div
-          className={`font-bold text-6xl underline bg-customRed w-full pt-4 pb-6 rounded-lg event-area ${
+          className={`font-bold text-5xl underline bg-customRed w-full pt-4 pb-6 rounded-lg event-area ${
             showEvent ? "show-event" : ""
           }`}
         >
@@ -344,25 +344,25 @@ export default function EventArea({
           <div className="font-bold text-3xl text-center text-white underline pt-6">
             Players involved
           </div>
-          <div className="font-medium px-3 text-2xl bg-customYellow w-full py-4 rounded-lg mt-3">
+          <div className="font-medium px-3 text-xl bg-customYellow w-full py-4 rounded-lg mt-3">
             {playersInvolved}
           </div>
         </div>
         <div
           className={`instruction-area ${showEvent ? "show-instructions" : ""}`}
         >
-          <div className="font-bold text-3xl text-center text-white underline pt-4">
+          <div className="font-bold text-3xl text-center text-white underline pt-6">
             Instructions
           </div>
-          <div className="font-medium px-3 text-2xl bg-customGreen w-full py-4 rounded-lg mt-3">
+          <div className="font-medium px-3 text-xl bg-customGreen w-full py-4 rounded-lg mt-3">
             {instructions}
           </div>
         </div>
-        <hr className="mt-6" />
+        <hr className="mt-8" />
         <div
           className={`next-player-area ${showEvent ? "show-next-player" : ""}`}
         >
-          <div className="font-medium px-3 text-2xl bg-customLightBlue w-full py-4 rounded-lg mt-6">
+          <div className="font-medium px-3 text-xl bg-customLightBlue w-full py-4 rounded-lg mt-8">
             {playContinue}
           </div>
           <TextToSpeech
