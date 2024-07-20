@@ -34,7 +34,7 @@ export default function PlayedCardButton({
       "Whopping Wormhole",
       "Shade Shuffle",
       "Flip & Fill",
-      "Pick & Pray",
+      // "Pick & Pray",
     ];
 
     const environments = [

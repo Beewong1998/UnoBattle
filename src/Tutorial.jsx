@@ -9,6 +9,8 @@ import styles from "./css/Tutorial.module.css";
 const videos = [
   "https://i.imgur.com/ZokGQsX.mp4",
   "https://i.imgur.com/UxcsXoY.mp4",
+  "https://i.imgur.com/tm3ujHg.mp4",
+  "https://i.imgur.com/s1iPVE0.mp4",
   "https://i.imgur.com/CN6d3ow.mp4",
   "https://i.imgur.com/0YKppo0.mp4",
   "https://i.imgur.com/OVVvT44.mp4",
@@ -17,13 +19,17 @@ const videos = [
 const tutorialTitle = [
   "Tutorial",
   "Events",
+  "Environments",
+  "Environments",
   "End Game Round",
   "New Game Round",
   "Overall Winner",
 ];
 const tutorialDescription = [
   'Press the "Play Card" button everytime you play a card in real life',
-  "Events are triggered randomly",
+  "Events are triggered randomly. These must be resolved before continuing.",
+  "Environments are sustained effects which alter how the game is played. (until it is replaced)",
+  "Environment icon keeps track of which environment is currrently in play.",
   "Track points when someone wins the round. (Add up cards remaining in hand)",
   "Continue in a new round. The round number is tracked automatically.",
   "End game after a few rounds to reveal the overall winner!",

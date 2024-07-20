@@ -12,6 +12,7 @@ export default function PatchNotes() {
         "Environments are sustained effects that continue until the environment is replaced by a new one",
         "Currently there are three environments - Silent Library, Cosy Campsite, and Mafia Manor. Discover what these do by playing the game!",
         "Added Environments to the tutorial",
+        "Removed Pick & Pray",
       ],
       date: "20/07/24",
       version: "1.2.1",

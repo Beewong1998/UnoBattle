@@ -173,63 +173,65 @@ export default function EventArea({
         of cards. Special cards means zero.
       </p>
     );
-  } else if (eventType.toLowerCase() == "pick & pray") {
-    const [randomNumber1, randomNumber2] =
-      generateTwoUniqueRandomNumbers(playerNames);
-    let randomNumber3 = Math.floor(Math.random() * playerNames.length);
-    if (randomNumber3 === randomNumber1 || randomNumber3 === randomNumber2) {
-      playersInvolved = (
-        <>
-          <p>
-            The players involved are{" "}
-            <span className="font-bold underline">
-              {playerNames[randomNumber1]}
-            </span>{" "}
-            and{" "}
-            <span className="font-bold underline">
-              {playerNames[randomNumber2]}
-            </span>{" "}
-          </p>
-        </>
-      );
-    } else {
-      playersInvolved = (
-        <>
-          <p>
-            The players involved are{" "}
-            <span className="font-bold underline">
-              {playerNames[randomNumber1]}
-            </span>{" "}
-            ,{" "}
-            <span className="font-bold underline">
-              {playerNames[randomNumber2]}
-            </span>{" "}
-            and{" "}
-            <span className="font-bold underline">
-              {playerNames[randomNumber3]}
-            </span>
-          </p>
-        </>
-      );
-    }
+  }
+  // else if (eventType.toLowerCase() == "pick & pray") {
+  //   const [randomNumber1, randomNumber2] =
+  //     generateTwoUniqueRandomNumbers(playerNames);
+  //   let randomNumber3 = Math.floor(Math.random() * playerNames.length);
+  //   if (randomNumber3 === randomNumber1 || randomNumber3 === randomNumber2) {
+  //     playersInvolved = (
+  //       <>
+  //         <p>
+  //           The players involved are{" "}
+  //           <span className="font-bold underline">
+  //             {playerNames[randomNumber1]}
+  //           </span>{" "}
+  //           and{" "}
+  //           <span className="font-bold underline">
+  //             {playerNames[randomNumber2]}
+  //           </span>{" "}
+  //         </p>
+  //       </>
+  //     );
+  //   } else {
+  //     playersInvolved = (
+  //       <>
+  //         <p>
+  //           The players involved are{" "}
+  //           <span className="font-bold underline">
+  //             {playerNames[randomNumber1]}
+  //           </span>{" "}
+  //           ,{" "}
+  //           <span className="font-bold underline">
+  //             {playerNames[randomNumber2]}
+  //           </span>{" "}
+  //           and{" "}
+  //           <span className="font-bold underline">
+  //             {playerNames[randomNumber3]}
+  //           </span>
+  //         </p>
+  //       </>
+  //     );
+  //   }
 
-    instructions = (
-      <p>
-        <span className="font-bold underline">
-          {playerNames[randomNumber1]}
-        </span>{" "}
-        must take a card from{" "}
-        <span className="font-bold underline">
-          {playerNames[randomNumber2]}
-        </span>
-        .{" "}
-        <span className="font-bold underline">
-          {playerNames[randomNumber3]}
-        </span>{" "}
-        must draw cards equal to the taken card. Special cards means zero.
-      </p>
-    );
-  } else if (eventType.toLowerCase() == "whopping wormhole") {
+  //   instructions = (
+  //     <p>
+  //       <span className="font-bold underline">
+  //         {playerNames[randomNumber1]}
+  //       </span>{" "}
+  //       must take a card from{" "}
+  //       <span className="font-bold underline">
+  //         {playerNames[randomNumber2]}
+  //       </span>
+  //       .{" "}
+  //       <span className="font-bold underline">
+  //         {playerNames[randomNumber3]}
+  //       </span>{" "}
+  //       must draw cards equal to the taken card. Special cards means zero.
+  //     </p>
+  //   );
+  // }
+  else if (eventType.toLowerCase() == "whopping wormhole") {
     playersInvolved = (
       <>
         <p>Everyone is affected!</p>
@@ -339,7 +341,7 @@ export default function EventArea({
         <div
           className={`player-area ${showEvent ? "show-players-involved" : ""}`}
         >
-          <div className="font-bold text-3xl text-center text-white underline pt-3">
+          <div className="font-bold text-3xl text-center text-white underline pt-6">
             Players involved
           </div>
           <div className="font-medium px-3 text-2xl bg-customYellow w-full py-4 rounded-lg mt-3">
@@ -349,7 +351,7 @@ export default function EventArea({
         <div
           className={`instruction-area ${showEvent ? "show-instructions" : ""}`}
         >
-          <div className="font-bold text-3xl text-center text-white underline pt-3">
+          <div className="font-bold text-3xl text-center text-white underline pt-4">
             Instructions
           </div>
           <div className="font-medium px-3 text-2xl bg-customGreen w-full py-4 rounded-lg mt-3">
