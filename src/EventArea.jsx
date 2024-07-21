@@ -156,6 +156,12 @@ export default function EventArea({
             <div className="font-medium px-3 text-2xl bg-customLightBlue w-full py-4 rounded-lg mt-8">
               {playContinue}
             </div>
+            <TextToSpeech
+              text=""
+              isAnnouncerMuted={isAnnouncerMuted}
+              voice={voice}
+              language={language}
+            />
 
             <button
               className="button bg-customRed text-black font-bold w-4/5 rounded-lg mt-4 text-s p-2"
