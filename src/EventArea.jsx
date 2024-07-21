@@ -53,7 +53,7 @@ export default function EventArea({
     <>
       {!skip && (
         <div
-          className={`row-start-1 row-span-8 col-start-2 col-span-10 mt-10`}
+          className={`row-start-1 row-span-8 col-start-2 col-span-10 mt-16`}
           onClick={() => {
             setSkip(true);
           }}
@@ -119,7 +119,7 @@ export default function EventArea({
 
       {skip && (
         <div
-          className={`row-start-1 row-span-8 col-start-2 col-span-10 mt-10`}
+          className={`row-start-1 row-span-8 col-start-2 col-span-10 mt-16`}
           onClick={() => {
             setEventTriggered(false);
             setEventType(null);
