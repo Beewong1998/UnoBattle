@@ -230,6 +230,8 @@ function App() {
       {eventTriggered && !winnerDecided && (
         <EventArea
           eventType={eventType}
+          setEventType={setEventType}
+          setEventTriggered={setEventTriggered}
           header={header}
           playersInvolved={playersInvolved}
           instructions={instructions}
@@ -239,7 +241,6 @@ function App() {
           playerNames={playerNames}
           isSoundEffectMuted={isSoundEffectMuted}
           isAnnouncerMuted={isAnnouncerMuted}
-          setEventTriggered={setEventTriggered}
           voice={voice}
           language={language}
         />

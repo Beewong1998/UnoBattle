@@ -39,6 +39,7 @@ export default function PlayedCardButton({
 
   //select a random event type
   function randomEventSelect() {
+    console.log("event has been triggered!");
     const events = [
       //normal events
       "Luck of the Draw",
@@ -65,7 +66,6 @@ export default function PlayedCardButton({
     let eventOrEnvironment = () => {
       let randomNumber = randomNumberGenerator();
 
-      console.log(randomNumber);
       if (randomNumber <= 25) {
         return "environment";
       } else {
@@ -79,18 +79,17 @@ export default function PlayedCardButton({
       selectedEvent =
         environments[Math.floor(Math.random() * environments.length)];
 
-      console.log(selectedEvent);
-
       while (selectedEvent.toLowerCase() === environment) {
         selectedEvent =
           environments[Math.floor(Math.random() * environments.length)];
       }
       setEventType(selectedEvent);
-    } else if (eventOrEnvironment() === "event") {
+    } else {
       selectedEvent = events[Math.floor(Math.random() * events.length)];
-      console.log(selectedEvent);
+
       setEventType(selectedEvent);
     }
+    console.log(`the selected event in random select is ${selectedEvent}`);
   }
 
   function generateEventDetails() {

@@ -27,7 +27,6 @@ const TextToSpeech = ({ text, isAnnouncerMuted, voice, language }) => {
             endTime = performance.now();
 
             const duration = endTime - startTime;
-            console.log(duration);
 
             setTimeout(() => {
               speakQueue(index + 1);
