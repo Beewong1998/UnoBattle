@@ -117,7 +117,7 @@ function App() {
 
   return (
     <div
-      className="App bg-customDeepBlue grid grid-cols-12 grid-rows-12 w-screen h-screen grid-flow-dense"
+      className="App bg-customDeepBlue grid grid-cols-12 grid-rows-12 w-screen h-screen grid-flow-dense overflow-scroll"
       onClick={closeEverything}
     >
       {!inputtedPlayers && (
