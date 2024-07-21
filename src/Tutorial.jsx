@@ -44,7 +44,6 @@ const Tutorial = ({ tutorialOpen, setTutorialOpen }) => {
 
   const closeTutorial = () => {
     setTutorialOpen(false);
-    console.log(tutorialOpen);
   };
 
   return (

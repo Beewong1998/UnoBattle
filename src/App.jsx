@@ -71,6 +71,12 @@ function App() {
   //state to keep track of environment information
   const [environmentInformation, setEnvironmentInformation] = useState(false);
 
+  //state to keep track of events generated
+  const [header, setHeader] = useState();
+  const [playersInvolved, setPlayersInvolved] = useState();
+  const [instructions, setInstructions] = useState();
+  const [playContinue, setPlayContinue] = useState();
+
   function handleChange(e) {
     setNumberOfPlayers(e.target.value);
   }
@@ -176,10 +182,17 @@ function App() {
         <>
           <GameRound gameRound={gameRound} />
           <PlayedCardButton
+            playerNames={playerNames}
             setEventTriggered={setEventTriggered}
+            eventType={eventType}
             setEventType={setEventType}
+            setHeader={setHeader}
+            setPlayersInvolved={setPlayersInvolved}
+            setInstructions={setInstructions}
+            setPlayContinue={setPlayContinue}
             isSoundEffectMuted={isSoundEffectMuted}
             numberOfPlayers={numberOfPlayers}
+            setEnvironment={setEnvironment}
             environment={environment}
           />
           <Environment
@@ -217,12 +230,17 @@ function App() {
       {eventTriggered && !winnerDecided && (
         <EventArea
           eventType={eventType}
+          setEventType={setEventType}
+          setEventTriggered={setEventTriggered}
+          header={header}
+          playersInvolved={playersInvolved}
+          instructions={instructions}
+          playContinue={playContinue}
           setEnvironment={setEnvironment}
           environment={environment}
           playerNames={playerNames}
           isSoundEffectMuted={isSoundEffectMuted}
           isAnnouncerMuted={isAnnouncerMuted}
-          setEventTriggered={setEventTriggered}
           voice={voice}
           language={language}
         />

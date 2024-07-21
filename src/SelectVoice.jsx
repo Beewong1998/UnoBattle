@@ -14,10 +14,8 @@ const SelectVoice = ({ voice, setVoice, setLanguage }) => {
     }
   };
   const voices = window.speechSynthesis.getVoices();
-  console.log(voice);
-  window.speechSynthesis.getVoices().map((voice) => {
-    console.log(voice);
-  });
+
+  window.speechSynthesis.getVoices().map((voice) => {});
 
   return (
     <div className="w-full">
