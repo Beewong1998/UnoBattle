@@ -7,6 +7,7 @@ import {
   faVolumeXmark,
   faAngleLeft,
   faQuestionCircle,
+  faRulerCombined,
 } from "@fortawesome/free-solid-svg-icons";
 import MuteButton from "./MuteButton";
 import SelectVoice from "./SelectVoice";
@@ -153,6 +154,30 @@ export default function Settings({
                   >
                     Replay Tutorial
                   </button>
+                </div>
+              </div>
+              <div className="bg-white  w-5/6 h-8 rounded-lg">
+                <div className="flex flex-row h-full items-center pr-3">
+                  <div className="w-14">
+                    <FontAwesomeIcon
+                      className=" w-7"
+                      size="xl"
+                      icon={faRulerCombined}
+                      style={{ color: "#c0c0c0" }}
+                    />
+                  </div>
+                  <p>
+                    Bee-veloped by{"  "}
+                    <a
+                      href="https://kinwong.dev/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline text-yellow-500"
+                    >
+                      {" "}
+                      Bee
+                    </a>
+                  </p>
                 </div>
               </div>
             </div>

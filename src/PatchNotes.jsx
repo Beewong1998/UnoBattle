@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styles from "./css/PatchNotes.module.css";
 import { CSSTransition } from "react-transition-group";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRulerCombined } from "@fortawesome/free-solid-svg-icons";
 
 export default function PatchNotes() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -154,6 +156,7 @@ export default function PatchNotes() {
                   </ul>
                 </div>
               ))}
+
               <button
                 className="bg-customGreen text-black font-base w-24 h-6 rounded-2xl mt-8 mb-2 active:bg-customGreenActive text-sm shadow-md"
                 onClick={() => {
