@@ -21,7 +21,7 @@ export default function PlayedCardButton({
 }) {
   const [isLoading, setIsLoading] = useState(false);
   //state to keep of how many times an event has not happened in a row
-  const [countDown, setCountDown] = useState(4);
+  const [countDown, setCountDown] = useState(7);
   //state to keep of event happening so it does not happen twice in a row
   const [eventTriggeredCooldown, setEventTriggeredCooldown] = useState(true);
 
@@ -399,7 +399,7 @@ export default function PlayedCardButton({
 
     setEventTriggered(false);
 
-    if ((randomNumber <= 15 && !eventTriggeredCooldown) || countDown == 0) {
+    if ((randomNumber <= 12 && !eventTriggeredCooldown) || countDown == 0) {
       playYesEvent();
       randomEventSelect();
     } else {

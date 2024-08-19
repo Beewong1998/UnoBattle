@@ -10,7 +10,7 @@ export default function PatchNotes() {
   const patchData = [
     {
       updates: [
-        "Decreased the chance of events happening from 25% to 15% to make them more special",
+        "Decreased the chance of events happening from 25% to 12% to make them feel more special",
       ],
       date: "19/08/24",
       version: "1.2.2",
