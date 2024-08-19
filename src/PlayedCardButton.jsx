@@ -399,7 +399,7 @@ export default function PlayedCardButton({
 
     setEventTriggered(false);
 
-    if ((randomNumber <= 25 && !eventTriggeredCooldown) || countDown == 0) {
+    if ((randomNumber <= 15 && !eventTriggeredCooldown) || countDown == 0) {
       playYesEvent();
       randomEventSelect();
     } else {

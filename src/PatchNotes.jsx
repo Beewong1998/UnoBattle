@@ -10,6 +10,13 @@ export default function PatchNotes() {
   const patchData = [
     {
       updates: [
+        "Decreased the chance of events happening from 25% to 15% to make them more special",
+      ],
+      date: "19/08/24",
+      version: "1.2.2",
+    },
+    {
+      updates: [
         "New game feature - Environments!",
         "Environments are sustained effects that continue until the environment is replaced by a new one",
         "Currently there are three environments - Silent Library, Cosy Campsite, and Mafia Manor. Discover what these do by playing the game!",
